@@ -1,0 +1,42 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Dependency directories
+node_modules/
+
+# Local environment files
+*.local
+.env
+.env.*
+!.env.example
+
+# IDE / Editor settings
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.code-workspace
+
+# TypeScript
+*.tsbuildinfo
+
+# Vite / cache
+.vite/
+.cache/
+.temp/
+
+# Tests / coverage
+coverage/
+*.lcov
+jest-cache/
+jest-stare/
