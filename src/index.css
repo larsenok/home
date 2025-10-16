@@ -1,3 +1,279 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Global resets */
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  margin: 0;
+  font-family: 'Trebuchet MS', Tahoma, Arial, sans-serif;
+  background: linear-gradient(180deg, #f4f4f4 0%, #dcdcdc 100%);
+  color: #222;
+  line-height: 1.5;
+}
+
+a {
+  color: #1b3d91;
+  text-decoration: underline;
+}
+
+a:hover,
+a:focus {
+  color: #0f285f;
+}
+
+.page {
+  max-width: 920px;
+  margin: 48px auto;
+  padding: 32px 40px;
+  background: #ffffff;
+  border: 1px solid #c7c7c7;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.08);
+}
+
+.hero {
+  text-align: center;
+  padding-bottom: 16px;
+  border-bottom: 2px solid #d0d0d0;
+}
+
+.hero h1 {
+  margin: 0 0 8px;
+  font-size: 36px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #162850;
+}
+
+.tagline {
+  margin: 0;
+  font-size: 14px;
+  color: #444;
+}
+
+main {
+  margin-top: 28px;
+}
+
+section + section {
+  margin-top: 32px;
+}
+
+.intro p {
+  margin: 0;
+  font-size: 15px;
+}
+
+.projects h2,
+.matrix h2 {
+  margin: 0 0 12px;
+  font-size: 22px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #1f3763;
+}
+
+.project-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.project-card + .project-card {
+  border-top: 1px solid #dcdcdc;
+}
+
+.project-card {
+  padding: 18px 0;
+}
+
+.project-heading {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.project-heading h3 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.project-heading a {
+  text-decoration: none;
+  border-bottom: 1px dotted #1b3d91;
+}
+
+.project-heading a:hover,
+.project-heading a:focus {
+  border-bottom-style: solid;
+}
+
+.project-year {
+  font-size: 13px;
+  color: #555;
+  padding: 2px 6px;
+  border: 1px solid #bbbbbb;
+  background: #f0f0f0;
+}
+
+.project-summary {
+  margin: 12px 0 10px;
+  font-size: 15px;
+}
+
+.project-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 12px;
+  align-items: center;
+  font-size: 13px;
+}
+
+.meta-label {
+  font-weight: 700;
+  color: #2f2f2f;
+}
+
+.tech-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tech-list li {
+  padding: 2px 8px;
+  border: 1px solid #b7b7b7;
+  background: #f5f5f5;
+}
+
+.source-link {
+  margin-left: auto;
+}
+
+.matrix-description {
+  margin: 0;
+  font-size: 14px;
+  color: #444;
+}
+
+.matrix-wrapper {
+  margin-top: 16px;
+  overflow-x: auto;
+  border: 1px solid #cfcfcf;
+  background: #fbfbfb;
+}
+
+.matrix-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  min-width: 480px;
+}
+
+.matrix-table th,
+.matrix-table td {
+  border: 1px solid #c9c9c9;
+  padding: 8px;
+  text-align: center;
+}
+
+.matrix-table thead th {
+  background: #e5e5e5;
+  color: #1d1d1d;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+.matrix-table th:first-child,
+.matrix-table td:first-child {
+  text-align: left;
+  background: #f0f0f0;
+  font-weight: 600;
+}
+
+.tech-name {
+  display: block;
+}
+
+.tech-category {
+  display: block;
+  margin-top: 4px;
+  font-size: 11px;
+  color: #555;
+  font-style: italic;
+}
+
+.matrix-cell {
+  min-width: 40px;
+  height: 32px;
+}
+
+.matrix-cell.has-tech {
+  background: #d8f1d8;
+  color: #164016;
+  font-weight: 700;
+}
+
+.matrix-project span {
+  display: inline-block;
+  max-width: 160px;
+}
+
+.matrix-legend {
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #333;
+}
+
+.legend-mark {
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  line-height: 22px;
+  text-align: center;
+  border: 1px solid #3c743c;
+  background: #d8f1d8;
+  color: #164016;
+  font-weight: 700;
+}
+
+.footer {
+  margin-top: 36px;
+  padding-top: 16px;
+  border-top: 2px solid #d0d0d0;
+  font-size: 13px;
+  text-align: center;
+  color: #555;
+}
+
+@media (max-width: 720px) {
+  .page {
+    margin: 24px 12px;
+    padding: 24px;
+  }
+
+  .project-heading {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .source-link {
+    margin-left: 0;
+  }
+
+  .matrix-project span {
+    max-width: none;
+  }
+}

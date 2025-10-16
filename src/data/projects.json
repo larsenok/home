@@ -1,0 +1,33 @@
+{
+  "technologies": [
+    { "name": "Static HTML", "category": "Presentation" },
+    { "name": "Vanilla CSS", "category": "Presentation" },
+    { "name": "React", "category": "Frontend" },
+    { "name": "TypeScript", "category": "Language" },
+    { "name": "Node.js", "category": "Backend" },
+    { "name": "REST APIs", "category": "Integration" }
+  ],
+  "projects": [
+    {
+      "name": "Retro Portfolio",
+      "summary": "A single-page calling card inspired by early web design cues.",
+      "link": "https://example.com/retro",
+      "year": 2023,
+      "technologies": ["Static HTML", "Vanilla CSS"]
+    },
+    {
+      "name": "Workbench UI",
+      "summary": "Component exploration playground for experimenting with interface ideas.",
+      "link": "https://example.com/workbench",
+      "year": 2024,
+      "technologies": ["React", "TypeScript", "Vanilla CSS"]
+    },
+    {
+      "name": "Toolbelt API",
+      "summary": "Utility endpoints that power personal automations and dashboards.",
+      "link": "https://example.com/toolbelt",
+      "year": 2022,
+      "technologies": ["Node.js", "TypeScript", "REST APIs"]
+    }
+  ]
+}
