@@ -142,7 +142,7 @@ export default function App() {
       </main>
 
       <footer className="footer">
-        <p>Hand-built. No bloat. Expand the JSON file to add new adventures.</p>
+        <p>@ 2025</p>
       </footer>
     </div>
   );
