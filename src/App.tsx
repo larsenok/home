@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react';
 import rawData from './data/projects.json';
 
 type Technology = {
@@ -35,23 +36,60 @@ export default function App() {
 
   const projectTechSets = new Map(projects.map((project) => [project.name, new Set(project.technologies)]));
 
+  const momentumStats = projects.map((project) => ({
+    name: project.name,
+    techCount: project.technologies.length,
+  }));
+
+  const maxTechCount = momentumStats.reduce((max, stat) => Math.max(max, stat.techCount), 1);
+
   return (
     <div className="page">
       <header className="hero">
-        <h1>Project Hub</h1>
-        <p className="tagline">A lightweight index of experiments, utilities, and curiosities.</p>
+        <h1>&lt;name&gt; Build Journal</h1>
+        <p className="tagline">Personal playground, client-ready outcomes, and an open invitation to collaborate.</p>
       </header>
 
       <main>
         <section className="intro">
           <p>
-            Welcome to a tidy corner of the web where every build is catalogued. No frameworks-on-top-of-frameworks
-            here—just hand-tuned notes about each project and a simple ledger of the technologies they touch.
+            I design and engineer thoughtful web experiences that make complex ideas easier to use. This page is a
+            living record of experiments, production launches, and passion projects so you can see what I&apos;ve shipped
+            and decide if we should create something together.
+          </p>
+          <p>
+            Browse the highlights below, explore the technology matrix, and reach out when you&apos;re ready to start the
+            next chapter of your product.
           </p>
         </section>
 
+        <section className="visual-demo" aria-labelledby="visual-demo-heading">
+          <h2 id="visual-demo-heading">Project Momentum</h2>
+          <p className="visual-description">
+            A quick pulse on each build&apos;s complexity. The brighter the bar, the wider the stack I orchestrated to bring
+            it to life.
+          </p>
+          <ul className="momentum-list">
+            {momentumStats.map((stat, index) => {
+              const fillWidth = (stat.techCount / maxTechCount) * 100;
+              const fillStyle = { '--fill-width': `${fillWidth}%`, '--fill-delay': `${index * 80}ms` } as CSSProperties;
+
+              return (
+                <li key={`${stat.name}-momentum`}>
+                  <span className="momentum-name">{stat.name}</span>
+                  <div className="momentum-bar">
+                    <div className="momentum-fill" style={fillStyle}>
+                      <span className="momentum-count">{stat.techCount} tech</span>
+                    </div>
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+
         <section className="projects">
-          <h2>Projects</h2>
+          <h2>Project Stories</h2>
           <ul className="project-list">
             {projects.map((project) => {
               const yearText = formatYear(project.year);
@@ -139,10 +177,40 @@ export default function App() {
             <span className="legend-text">Project completed with the listed technology.</span>
           </div>
         </section>
+
+        <section className="contact" aria-labelledby="contact-heading">
+          <div className="contact-panel">
+            <h2 id="contact-heading">Let&apos;s build something purposeful</h2>
+            <p>
+              Ready to co-create a product or need help untangling a tricky interface? I&apos;m available for product design,
+              full-stack prototyping, and collaborative sprint work.
+            </p>
+            <div className="contact-grid" role="list">
+              <a className="contact-chip" href="mailto:hello@&lt;name&gt;.com" role="listitem">
+                <span className="contact-chip-label">Email</span>
+                <span className="contact-chip-value">hello@&lt;name&gt;.com</span>
+              </a>
+              <a className="contact-chip" href="https://cal.com/&lt;name&gt;/build" target="_blank" rel="noreferrer" role="listitem">
+                <span className="contact-chip-label">Book a call</span>
+                <span className="contact-chip-value">cal.com/&lt;name&gt;/build</span>
+              </a>
+              <a className="contact-chip" href="https://www.linkedin.com/in/&lt;name&gt;" target="_blank" rel="noreferrer" role="listitem">
+                <span className="contact-chip-label">LinkedIn</span>
+                <span className="contact-chip-value">linkedin.com/in/&lt;name&gt;</span>
+              </a>
+              <div className="contact-chip contact-chip--static" role="listitem">
+                <span className="contact-chip-label">Based in</span>
+                <span className="contact-chip-value">Lisbon → Remote worldwide</span>
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
 
       <footer className="footer">
-        <p>Hand-built. No bloat. Expand the JSON file to add new adventures.</p>
+        <p>
+          Hand-built with curiosity. Ping me when you&apos;re ready for the next release-worthy experiment.
+        </p>
       </footer>
     </div>
   );
