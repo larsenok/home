@@ -27,20 +27,22 @@ a:focus {
 
 .page {
   max-width: 960px;
-  margin: 48px auto;
-  padding: 40px 48px;
+  margin: 36px auto;
+  padding: 32px 36px;
   background: linear-gradient(165deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.9));
   border: 1px solid rgba(44, 65, 132, 0.18);
-  border-radius: 8px;
+  border-radius: 12px;
   box-shadow: 0 14px 38px rgba(20, 41, 99, 0.08);
+  display: grid;
+  gap: 32px;
 }
 
 .hero {
   display: grid;
   grid-template-columns: minmax(0, 2.25fr) minmax(0, 1fr);
-  gap: 28px;
-  padding-bottom: 32px;
-  border-bottom: 2px solid rgba(35, 70, 177, 0.16);
+  gap: 24px;
+  padding-bottom: 24px;
+  border-bottom: 2px solid rgba(35, 70, 177, 0.12);
 }
 
 .hero-label {
@@ -56,26 +58,31 @@ a:focus {
 
 .hero h1 {
   margin: 4px 0 12px;
-  font-size: 44px;
-  letter-spacing: 1.2px;
+  font-size: 42px;
+  letter-spacing: 1.1px;
   text-transform: uppercase;
   color: #172250;
+  line-height: 1.1;
+  word-break: break-word;
+  hyphens: auto;
 }
 
 .tagline {
   margin: 0;
   font-size: 16px;
   color: #3b3f55;
+  max-width: 36ch;
 }
 
 .hero-aside {
   align-self: center;
-  padding: 18px 22px;
+  padding: 16px 18px;
   border: 1px solid rgba(31, 35, 51, 0.12);
-  border-radius: 8px;
-  background: linear-gradient(135deg, rgba(35, 70, 177, 0.08), rgba(255, 255, 255, 0.85));
+  border-radius: 10px;
+  background: linear-gradient(135deg, rgba(35, 70, 177, 0.06), rgba(255, 255, 255, 0.9));
   font-size: 15px;
   color: #222741;
+  line-height: 1.55;
 }
 
 main {
@@ -88,11 +95,11 @@ section + section {
 
 .contact-card {
   border: 1px solid rgba(35, 70, 177, 0.15);
-  border-radius: 8px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(245, 248, 255, 0.92));
-  padding: 24px 28px;
+  border-radius: 10px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(245, 248, 255, 0.94));
+  padding: 20px 22px;
   display: grid;
-  gap: 18px;
+  gap: 14px;
 }
 
 .contact-heading h2 {
@@ -114,30 +121,31 @@ section + section {
   padding: 0;
   margin: 0;
   display: grid;
-  gap: 8px;
+  gap: 6px;
 }
 
 .contact-list li {
   display: grid;
-  grid-template-columns: minmax(120px, auto) minmax(0, 1fr);
-  gap: 16px;
-  font-size: 15px;
+  grid-template-columns: minmax(100px, auto) minmax(0, 1fr);
+  gap: 12px;
+  font-size: 14px;
   align-items: center;
-  background: rgba(35, 70, 177, 0.05);
-  border: 1px solid rgba(35, 70, 177, 0.12);
+  background: rgba(35, 70, 177, 0.04);
+  border: 1px solid rgba(35, 70, 177, 0.1);
   border-radius: 6px;
-  padding: 10px 14px;
+  padding: 8px 12px;
 }
 
 .contact-label {
   font-family: 'Source Code Pro', 'Courier New', Courier, monospace;
-  font-size: 13px;
+  font-size: 12px;
   color: #1e2b5f;
   letter-spacing: 0.5px;
 }
 
 .contact-value {
   color: #2a2f49;
+  font-size: 14px;
 }
 
 .intro p {
@@ -159,20 +167,25 @@ section + section {
   list-style: none;
   margin: 0;
   padding: 0;
-}
-
-.project-card + .project-card {
-  border-top: 1px solid rgba(30, 43, 95, 0.15);
+  display: grid;
+  gap: 16px;
 }
 
 .project-card {
-  padding: 20px 0;
+  padding: 18px 20px;
+  border: 1px solid rgba(30, 43, 95, 0.12);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 10px 24px rgba(23, 34, 80, 0.05);
+  display: grid;
+  gap: 12px;
 }
 
 .project-heading {
   display: flex;
-  align-items: baseline;
-  gap: 12px;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
 }
 
 .project-heading h3 {
@@ -201,7 +214,7 @@ section + section {
 }
 
 .project-summary {
-  margin: 12px 0 10px;
+  margin: 4px 0 2px;
   font-size: 15px;
   color: #2c314a;
 }
@@ -209,7 +222,7 @@ section + section {
 .project-meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px 12px;
+  gap: 6px 10px;
   align-items: center;
   font-size: 13px;
 }
@@ -229,10 +242,11 @@ section + section {
 }
 
 .tech-list li {
-  padding: 2px 8px;
+  padding: 2px 6px;
   border: 1px solid rgba(35, 70, 177, 0.18);
-  background: rgba(35, 70, 177, 0.07);
+  background: rgba(35, 70, 177, 0.06);
   color: #1d2956;
+  border-radius: 4px;
 }
 
 .source-link {
@@ -248,18 +262,18 @@ section + section {
 .matrix-grid {
   margin-top: 24px;
   display: grid;
-  gap: 20px;
+  gap: 18px;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
 
 .matrix-card {
   border: 1px solid rgba(35, 70, 177, 0.14);
-  border-radius: 8px;
+  border-radius: 10px;
   background: rgba(255, 255, 255, 0.94);
-  padding: 20px 22px;
+  padding: 18px 20px;
   display: grid;
-  gap: 14px;
-  box-shadow: 0 12px 24px rgba(20, 41, 99, 0.06);
+  gap: 12px;
+  box-shadow: 0 12px 24px rgba(20, 41, 99, 0.05);
 }
 
 .matrix-card-header {
@@ -319,8 +333,8 @@ section + section {
 
 .matrix-projects li {
   padding: 4px 6px;
-  border-left: 3px solid rgba(35, 70, 177, 0.35);
-  background: rgba(35, 70, 177, 0.06);
+  border-left: 3px solid rgba(35, 70, 177, 0.32);
+  background: rgba(35, 70, 177, 0.05);
 }
 
 .matrix-projects-empty {
@@ -328,31 +342,101 @@ section + section {
   color: #566089;
 }
 
-.footer {
-  margin-top: 48px;
-  padding-top: 18px;
-  border-top: 2px solid rgba(35, 70, 177, 0.16);
-  font-size: 14px;
-  text-align: center;
-  color: #3a3f56;
-}
-
 @media (max-width: 720px) {
   .page {
-    margin: 24px 12px;
-    padding: 28px;
+    margin: 20px 12px;
+    padding: 24px 22px;
   }
 
   .hero {
     grid-template-columns: 1fr;
+    gap: 20px;
   }
 
   .hero-aside {
-    padding: 16px 18px;
+    padding: 14px 16px;
+  }
+
+  .hero h1 {
+    font-size: 34px;
+  }
+
+  .tagline {
+    max-width: none;
   }
 
   .contact-list li {
     grid-template-columns: 1fr;
     gap: 6px;
+  }
+
+  .project-card {
+    padding: 16px 18px;
+  }
+
+  .project-meta {
+    gap: 6px 8px;
+  }
+}
+
+@media (max-width: 540px) {
+  .page {
+    margin: 16px;
+    padding: 20px;
+    gap: 28px;
+  }
+
+  .hero h1 {
+    font-size: 30px;
+    letter-spacing: 0.8px;
+  }
+
+  .hero-aside {
+    font-size: 14px;
+  }
+
+  .contact-card {
+    padding: 18px;
+  }
+
+  .contact-list li {
+    padding: 8px 10px;
+  }
+
+  .project-card {
+    padding: 14px 16px;
+    gap: 10px;
+  }
+
+  .project-summary {
+    font-size: 14px;
+  }
+
+  .matrix-grid {
+    gap: 16px;
+  }
+}
+
+@media (max-width: 400px) {
+  .page {
+    margin: 12px;
+    padding: 16px;
+    gap: 24px;
+  }
+
+  .hero h1 {
+    font-size: 26px;
+  }
+
+  .contact-card {
+    gap: 12px;
+  }
+
+  .project-heading h3 {
+    font-size: 18px;
+  }
+
+  .project-meta {
+    font-size: 12px;
   }
 }

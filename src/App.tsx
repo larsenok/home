@@ -168,12 +168,6 @@ export default function App() {
         </section>
       </main>
 
-      <footer className="footer">
-        <p>
-          © 2025 &middot; Built with curiosity and a steady supply of playlists. Swap the placeholders above with
-          your own story.
-        </p>
-      </footer>
     </div>
   );
 }
