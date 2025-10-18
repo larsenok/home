@@ -10,29 +10,29 @@
 body {
   margin: 0;
   font-family: 'Trebuchet MS', Tahoma, Arial, sans-serif;
-  background: linear-gradient(140deg, #f2f5ff 0%, #fef8f2 40%, #f3f9f6 100%);
-  color: #1f2333;
+  background: linear-gradient(150deg, #f9f4ef 0%, #fff8f1 35%, #f4f1ea 100%);
+  color: #2f2a28;
   line-height: 1.6;
 }
 
 a {
-  color: #2346b1;
+  color: #b7643c;
   text-decoration: underline;
 }
 
 a:hover,
 a:focus {
-  color: #142b63;
+  color: #8d4d2d;
 }
 
 .page {
   max-width: 960px;
   margin: 36px auto;
   padding: 32px 36px;
-  background: linear-gradient(165deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.9));
-  border: 1px solid rgba(44, 65, 132, 0.18);
+  background: linear-gradient(165deg, rgba(255, 252, 247, 0.96), rgba(255, 253, 247, 0.9));
+  border: 1px solid rgba(186, 156, 124, 0.35);
   border-radius: 12px;
-  box-shadow: 0 14px 38px rgba(20, 41, 99, 0.08);
+  box-shadow: 0 14px 32px rgba(109, 83, 58, 0.08);
   display: grid;
   gap: 32px;
 }
@@ -42,7 +42,7 @@ a:focus {
   grid-template-columns: minmax(0, 2.25fr) minmax(0, 1fr);
   gap: 24px;
   padding-bottom: 24px;
-  border-bottom: 2px solid rgba(35, 70, 177, 0.12);
+  border-bottom: 2px solid rgba(183, 137, 92, 0.18);
 }
 
 .hero-label {
@@ -50,8 +50,8 @@ a:focus {
   font-size: 12px;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: rgba(35, 70, 177, 0.75);
-  border-left: 3px solid rgba(35, 70, 177, 0.65);
+  color: rgba(183, 114, 65, 0.78);
+  border-left: 3px solid rgba(183, 114, 65, 0.65);
   padding-left: 10px;
   margin-bottom: 12px;
 }
@@ -61,7 +61,7 @@ a:focus {
   font-size: 42px;
   letter-spacing: 1.1px;
   text-transform: uppercase;
-  color: #172250;
+  color: #3c2b1e;
   line-height: 1.1;
   word-break: break-word;
   hyphens: auto;
@@ -70,18 +70,18 @@ a:focus {
 .tagline {
   margin: 0;
   font-size: 16px;
-  color: #3b3f55;
+  color: #5a5148;
   max-width: 36ch;
 }
 
 .hero-aside {
   align-self: center;
   padding: 16px 18px;
-  border: 1px solid rgba(31, 35, 51, 0.12);
+  border: 1px solid rgba(168, 134, 98, 0.2);
   border-radius: 10px;
-  background: linear-gradient(135deg, rgba(35, 70, 177, 0.06), rgba(255, 255, 255, 0.9));
+  background: linear-gradient(135deg, rgba(231, 191, 148, 0.08), rgba(255, 255, 255, 0.9));
   font-size: 15px;
-  color: #222741;
+  color: #42372f;
   line-height: 1.55;
 }
 
@@ -94,9 +94,9 @@ section + section {
 }
 
 .contact-card {
-  border: 1px solid rgba(35, 70, 177, 0.15);
+  border: 1px solid rgba(194, 151, 103, 0.26);
   border-radius: 10px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(245, 248, 255, 0.94));
+  background: linear-gradient(180deg, rgba(255, 253, 247, 0.96), rgba(249, 242, 231, 0.94));
   padding: 20px 22px;
   display: grid;
   gap: 14px;
@@ -107,13 +107,13 @@ section + section {
   font-size: 22px;
   letter-spacing: 1px;
   text-transform: uppercase;
-  color: #1e2b5f;
+  color: #5a3d1f;
 }
 
 .contact-heading p {
   margin: 0;
   font-size: 14px;
-  color: #444a63;
+  color: #594b42;
 }
 
 .contact-list {
@@ -130,8 +130,8 @@ section + section {
   gap: 12px;
   font-size: 14px;
   align-items: center;
-  background: rgba(35, 70, 177, 0.04);
-  border: 1px solid rgba(35, 70, 177, 0.1);
+  background: rgba(226, 187, 140, 0.08);
+  border: 1px solid rgba(194, 151, 103, 0.22);
   border-radius: 6px;
   padding: 8px 12px;
 }
@@ -139,19 +139,19 @@ section + section {
 .contact-label {
   font-family: 'Source Code Pro', 'Courier New', Courier, monospace;
   font-size: 12px;
-  color: #1e2b5f;
+  color: #7c4d2c;
   letter-spacing: 0.5px;
 }
 
 .contact-value {
-  color: #2a2f49;
+  color: #3f342b;
   font-size: 14px;
 }
 
 .intro p {
   margin: 0;
   font-size: 16px;
-  color: #2c314a;
+  color: #4c4036;
 }
 
 .projects h2,
@@ -160,7 +160,7 @@ section + section {
   font-size: 22px;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: #1e2b5f;
+  color: #5a3d1f;
 }
 
 .project-list {
@@ -173,10 +173,10 @@ section + section {
 
 .project-card {
   padding: 18px 20px;
-  border: 1px solid rgba(30, 43, 95, 0.12);
+  border: 1px solid rgba(194, 151, 103, 0.24);
   border-radius: 10px;
-  background: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 10px 24px rgba(23, 34, 80, 0.05);
+  background: rgba(255, 253, 248, 0.92);
+  box-shadow: 0 10px 24px rgba(112, 81, 52, 0.05);
   display: grid;
   gap: 12px;
 }
@@ -192,12 +192,12 @@ section + section {
   margin: 0;
   font-size: 20px;
   font-weight: 700;
-  color: #1a254f;
+  color: #4a311c;
 }
 
 .project-heading a {
   text-decoration: none;
-  border-bottom: 1px dotted #2346b1;
+  border-bottom: 1px dotted #b7643c;
 }
 
 .project-heading a:hover,
@@ -207,16 +207,16 @@ section + section {
 
 .project-year {
   font-size: 13px;
-  color: #555;
+  color: #6d5442;
   padding: 2px 8px;
-  border: 1px solid rgba(30, 35, 64, 0.2);
-  background: rgba(35, 70, 177, 0.05);
+  border: 1px solid rgba(146, 112, 78, 0.28);
+  background: rgba(226, 187, 140, 0.18);
 }
 
 .project-summary {
   margin: 4px 0 2px;
   font-size: 15px;
-  color: #2c314a;
+  color: #4e4035;
 }
 
 .project-meta {
@@ -229,7 +229,7 @@ section + section {
 
 .meta-label {
   font-weight: 700;
-  color: #2f2f2f;
+  color: #523f33;
 }
 
 .tech-list {
@@ -243,9 +243,9 @@ section + section {
 
 .tech-list li {
   padding: 2px 6px;
-  border: 1px solid rgba(35, 70, 177, 0.18);
-  background: rgba(35, 70, 177, 0.06);
-  color: #1d2956;
+  border: 1px solid rgba(194, 151, 103, 0.28);
+  background: rgba(194, 151, 103, 0.15);
+  color: #6f482b;
   border-radius: 4px;
 }
 
@@ -256,7 +256,7 @@ section + section {
 .matrix-description {
   margin: 0;
   font-size: 15px;
-  color: #2f3550;
+  color: #4e4237;
 }
 
 .matrix-grid {
@@ -267,13 +267,13 @@ section + section {
 }
 
 .matrix-card {
-  border: 1px solid rgba(35, 70, 177, 0.12);
+  border: 1px solid rgba(194, 151, 103, 0.2);
   border-radius: 10px;
-  background: rgba(255, 255, 255, 0.94);
+  background: rgba(255, 253, 247, 0.94);
   padding: 18px 20px;
   display: grid;
   gap: 14px;
-  box-shadow: 0 8px 18px rgba(20, 41, 99, 0.05);
+  box-shadow: 0 8px 18px rgba(109, 83, 58, 0.05);
 }
 
 .matrix-card-header {
@@ -286,7 +286,7 @@ section + section {
 .matrix-card-header h3 {
   margin: 0;
   font-size: 18px;
-  color: #172250;
+  color: #4a311c;
 }
 
 .matrix-category-summary {
@@ -294,7 +294,7 @@ section + section {
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: rgba(35, 70, 177, 0.75);
+  color: rgba(183, 114, 65, 0.75);
   margin-top: 4px;
 }
 
@@ -315,32 +315,32 @@ section + section {
 
 .matrix-tech-name {
   font-weight: 600;
-  color: #1a254f;
+  color: #543721;
 }
 
 .matrix-tech-frequency {
   font-family: 'Source Code Pro', 'Courier New', Courier, monospace;
   font-size: 12px;
-  color: #2b3153;
+  color: #6d4a33;
 }
 
 .matrix-tech-projects {
   margin: 4px 0 0;
   font-size: 13px;
-  color: #3a4163;
+  color: #564a3f;
 }
 
 .matrix-remaining {
-  border-top: 1px solid rgba(35, 70, 177, 0.12);
+  border-top: 1px solid rgba(194, 151, 103, 0.18);
   padding-top: 8px;
   font-size: 13px;
-  color: #2f3550;
+  color: #4e4237;
 }
 
 .matrix-remaining summary {
   cursor: pointer;
   font-weight: 600;
-  color: #2346b1;
+  color: #b7643c;
 }
 
 .matrix-remaining ul {
