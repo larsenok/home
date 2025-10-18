@@ -19,16 +19,22 @@ type DataFile = {
   projects: Project[];
 };
 
+type TechnologyUsage = Technology & {
+  usedBy: Project[];
+  frequency: number;
+  weight: number;
+};
+
 const data = rawData as DataFile;
 
 const formatYear = (year?: number) => (year ? year.toString() : undefined);
 
 const contactDetails = [
-  { label: '<name>=', value: 'Add your name here' },
+  { label: '<name>=', value: 'Ole Larsen' },
   { label: '<role>=', value: 'Product-minded engineer & tinkerer' },
-  { label: '<email>=', value: 'hello@yourdomain.dev' },
-  { label: '<location>=', value: 'Where you are plotting the next build' },
-  { label: '<availability>=', value: 'Open to collaborations, coffee chats, and curious problems' },
+  { label: '<email>=', value: 'larsen.olek@gmail.com' },
+  { label: '<location>=', value: 'Oslo, Norway' },
+  { label: '<availability>=', value: 'Ready to help' },
 ];
 
 export default function App() {
@@ -42,7 +48,7 @@ export default function App() {
   });
 
   const projectTechSets = new Map(projects.map((project) => [project.name, new Set(project.technologies)]));
-  const technologyUsage = sortedTechnologies.map((tech) => {
+  const technologyUsage: TechnologyUsage[] = sortedTechnologies.map((tech) => {
     const usedBy = projects.filter((project) => projectTechSets.get(project.name)?.has(tech.name));
     return {
       ...tech,
@@ -51,6 +57,31 @@ export default function App() {
       weight: Math.round((usedBy.length / projects.length) * 100),
     };
   });
+
+  const groupedByCategory = technologyUsage.reduce<Map<string, TechnologyUsage[]>>((map, tech) => {
+    const existing = map.get(tech.category) ?? [];
+    existing.push(tech);
+    map.set(tech.category, existing);
+    return map;
+  }, new Map());
+
+  const condensedMatrix = Array.from(groupedByCategory.entries())
+    .map(([category, techs]) => {
+      const sorted = [...techs].sort((a, b) => {
+        if (b.frequency === a.frequency) {
+          return a.name.localeCompare(b.name);
+        }
+        return b.frequency - a.frequency;
+      });
+
+      return {
+        category,
+        toolCount: sorted.length,
+        highlighted: sorted.slice(0, 3),
+        remaining: sorted.slice(3),
+      };
+    })
+    .sort((a, b) => a.category.localeCompare(b.category));
 
   return (
     <div className="page">
@@ -134,34 +165,56 @@ export default function App() {
         <section className="matrix">
           <h2>Technology Matrix</h2>
           <p className="matrix-description">
-            Instead of cross-referencing rows and columns, skim the cards to see which tools earn repeat appearances,
-            where they shine, and how often they get to headline a build.
+            A condensed snapshot of the stacks that show up most—grouped by discipline so you can scan for the right
+            tool without wading through repetition.
           </p>
           <div className="matrix-grid">
-            {technologyUsage.map((tech) => (
-              <article key={tech.name} className="matrix-card">
+            {condensedMatrix.map((entry) => (
+              <article key={entry.category} className="matrix-card">
                 <header className="matrix-card-header">
                   <div>
-                    <h3>{tech.name}</h3>
-                    <span className="matrix-category">{tech.category}</span>
+                    <h3>{entry.category}</h3>
+                    <span className="matrix-category-summary">
+                      {entry.toolCount} {entry.toolCount === 1 ? 'tool' : 'tools'}
+                    </span>
                   </div>
-                  <span className="matrix-frequency">{tech.frequency} / {projects.length}</span>
                 </header>
-                <div className="matrix-progress" role="presentation">
-                  <span
-                    className="matrix-progress-bar"
-                    style={{ width: `${Math.max(tech.weight, tech.frequency ? 8 : 4)}%` }}
-                  />
-                </div>
-                <ul className="matrix-projects" aria-label={`Projects using ${tech.name}`}>
-                  {tech.usedBy.length > 0 ? (
-                    tech.usedBy.map((project) => (
-                      <li key={`${tech.name}-${project.name}`}>{project.name}</li>
-                    ))
-                  ) : (
-                    <li className="matrix-projects-empty">Waiting for its breakout project.</li>
-                  )}
+                <ul className="matrix-tech-list">
+                  {entry.highlighted.map((tech) => (
+                    <li key={`${entry.category}-${tech.name}`}>
+                      <div className="matrix-tech-heading">
+                        <span className="matrix-tech-name">{tech.name}</span>
+                        <span className="matrix-tech-frequency">
+                          {tech.frequency > 0 ? `${tech.frequency} project${tech.frequency > 1 ? 's' : ''}` : 'Exploring'}
+                        </span>
+                      </div>
+                      <p className="matrix-tech-projects">
+                        {tech.usedBy.length > 0
+                          ? tech.usedBy.map((project) => project.name).join(', ')
+                          : 'Awaiting first spotlight'}
+                      </p>
+                    </li>
+                  ))}
                 </ul>
+                {entry.remaining.length > 0 ? (
+                  <details className="matrix-remaining">
+                    <summary>Show {entry.remaining.length} more</summary>
+                    <ul>
+                      {entry.remaining.map((tech) => (
+                        <li key={`${entry.category}-${tech.name}-extra`}>
+                          <div className="matrix-tech-heading">
+                            <span className="matrix-tech-name">{tech.name}</span>
+                            <span className="matrix-tech-frequency">
+                              {tech.frequency > 0
+                                ? `${tech.frequency} project${tech.frequency > 1 ? 's' : ''}`
+                                : 'Exploring'}
+                            </span>
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
+                  </details>
+                ) : null}
               </article>
             ))}
           </div>
