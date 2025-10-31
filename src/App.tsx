@@ -56,7 +56,7 @@ const contactDetails: { label: string; value: Record<Language, string> }[] = [
     label: '<role>=',
     value: {
       en: 'Product-minded engineer & tinkerer',
-      no: 'Produktorientert utvikler og nysgjerrig problemløser',
+      no: 'Produktorientert utvikler og problemløser',
     },
   },
   { label: '<email>=', value: { en: 'larsen.olek@gmail.com', no: 'larsen.olek@gmail.com' } },
@@ -98,7 +98,7 @@ const translations: Record<Language, Translation> = {
     heroTagline:
       'Notater fra verkstedet—en hyllest til ferdige bygg, nesten-treff og verktøyene som holder dem i gang.',
     heroAside:
-      'Hver eneste kodelinje startet med en ekte kløe. Bla i katalogen, lån en idé eller ta kontakt så vi kan dele historier.',
+      'Bla i katalogen, lån en idé eller ta kontakt.',
     contactHeading: 'Kontaktspor',
     intro:
       'Det putrer alltid et helgeprosjekt i bakgrunnen. Noen modnes til fulle lanseringer, andre lærer bort en skarp leksjon og havner på hyllen. Denne siden er en levende logg for begge deler, med bakgrunn om hva som tente gnisten og verktøykassa som bar prosjektet i mål.',
@@ -122,21 +122,21 @@ const translations: Record<Language, Translation> = {
 };
 
 const projectSummaries: Record<string, Record<Language, string>> = {
-  'Workbench UI': {
-    en: 'Component exploration playground for experimenting with interface ideas and motion studies.',
-    no: 'En lekeplass for komponentutforskning der grensesnittidéer og animasjoner kan prøves ut fritt.',
-  },
-  'Open Energy': {
-    en: 'An interactive globe that maps real-time energy fluctuations using open data APIs.',
-    no: 'En interaktiv globus som viser sanntidsvariasjoner i energibruk via åpne data-API-er.',
-  },
   Brain2: {
     en: 'A structured note-taking app designed to help organize ideas and surface connections quickly.',
     no: 'En strukturert notatapp som gjør det lett å rydde i ideer og spotte koblinger kjapt.',
   },
+  'Wherego Puzzle': {
+    en: 'Website made for testing out combinations of digital puzzles.',
+    no: 'Nettside laget for å teste kombinasjoner av digitale puslespill.'
+  },
+  'Open Energy (IN-PROGRESS)': {
+    en: 'An interactive globe that maps real-time energy fluctuations using open data APIs.',
+    no: 'En interaktiv globus som viser sanntidsvariasjoner i energibruk via åpne data-API-er.',
+  },
   'Retro Portfolio': {
-    en: 'A single-page calling card that leans into vintage pixels, zine textures, and concise storytelling.',
-    no: 'Et visittkort på én side som spiller på retro-piksler, zine-teksturer og stram historiefortelling.',
+    en: 'A single-page calling card that leans into "vintage" design and concise storytelling.',
+    no: 'Et visittkort på én side som spiller på ™gammeldags™ design og enkel historiefortelling.',
   },
 };
 
@@ -144,7 +144,12 @@ const formatYear = (year?: number) => (year ? year.toString() : undefined);
 
 const detectLanguage = (): Language => {
   if (typeof navigator !== 'undefined') {
-    const languages = [navigator.language, ...(navigator.languages ?? [])]
+    const navigatorLanguages =
+      typeof navigator.languages !== 'undefined'
+        ? Array.from(navigator.languages)
+        : [];
+
+    const languages = [navigator.language, ...navigatorLanguages]
       .filter((value): value is string => Boolean(value))
       .map((value) => value.toLowerCase());
 
@@ -176,7 +181,10 @@ export default function App() {
 
   const projectTechSets = new Map(projects.map((project) => [project.name, new Set(project.technologies)]));
   const technologyUsage: TechnologyUsage[] = sortedTechnologies.map((tech) => {
-    const usedBy = projects.filter((project) => projectTechSets.get(project.name)?.has(tech.name));
+    const usedBy = projects.filter((project) => {
+      const techSet = projectTechSets.get(project.name);
+      return techSet !== undefined && techSet.has(tech.name);
+    });
     return {
       ...tech,
       usedBy,
@@ -186,7 +194,12 @@ export default function App() {
   });
 
   const groupedByCategory = technologyUsage.reduce<Map<string, TechnologyUsage[]>>((map, tech) => {
-    const existing = map.get(tech.category) ?? [];
+    const existing = map.get(tech.category);
+    if (existing !== undefined) {
+      existing.push(tech);
+    } else {
+      map.set(tech.category, [tech]);
+    }
     existing.push(tech);
     map.set(tech.category, existing);
     return map;
@@ -262,8 +275,12 @@ export default function App() {
           <ul className="project-list">
             {projects.map((project) => {
               const yearText = formatYear(project.year);
-              const localizedSummary = projectSummariesForLanguage[project.name]?.[language] ?? project.summary;
-
+              const projectSummary = projectSummariesForLanguage[project.name];
+              const localizedSummary =
+                projectSummary !== undefined && projectSummary[language] !== undefined
+                  ? projectSummary[language]
+                  : project.summary;
+                  
               return (
                 <li key={project.name} className="project-card">
                   <div className="project-heading">
