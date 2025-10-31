@@ -154,6 +154,60 @@ section + section {
   color: #4c4036;
 }
 
+.stack-summary {
+  border: 1px solid rgba(194, 151, 103, 0.26);
+  border-radius: 10px;
+  background: linear-gradient(165deg, rgba(255, 253, 246, 0.95), rgba(244, 234, 220, 0.92));
+  padding: 22px 24px;
+  display: grid;
+  gap: 18px;
+}
+
+.stack-summary-heading h2 {
+  margin: 0 0 6px;
+  font-size: 22px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #5a3d1f;
+}
+
+.stack-summary-heading p {
+  margin: 0;
+  font-size: 14px;
+  color: #594b42;
+}
+
+.stack-summary-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.stack-summary-list li {
+  border: 1px solid rgba(194, 151, 103, 0.24);
+  border-radius: 8px;
+  background: rgba(255, 253, 248, 0.92);
+  padding: 16px;
+  display: grid;
+  gap: 8px;
+  box-shadow: 0 8px 20px rgba(112, 81, 52, 0.06);
+}
+
+.stack-summary-list h3 {
+  margin: 0;
+  font-size: 16px;
+  color: #4a311c;
+}
+
+.stack-summary-list p {
+  margin: 0;
+  font-size: 14px;
+  color: #4c4036;
+}
+
 .projects h2,
 .matrix h2 {
   margin: 0 0 12px;

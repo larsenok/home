@@ -26,3 +26,6 @@ sed -i '/import.*App.css/d;/^$/N;/^\n$/d' src/App.tsx
 
 # 6. Run the dev server
 npm run dev
+
+# TODO
+- [ ] Document the kinds of projects that should be showcased in this atlas.
