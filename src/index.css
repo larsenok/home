@@ -45,6 +45,35 @@ a:focus {
   border-bottom: 2px solid rgba(183, 137, 92, 0.18);
 }
 
+.language-switcher {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.language-switcher-label {
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(183, 114, 65, 0.78);
+}
+
+.language-switcher select {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(168, 134, 98, 0.4);
+  background: rgba(255, 253, 248, 0.92);
+  color: #3f342b;
+  font-size: 13px;
+}
+
+.language-switcher select:focus {
+  outline: 2px solid rgba(183, 114, 65, 0.45);
+  outline-offset: 1px;
+}
+
 .hero-label {
   display: inline-block;
   font-size: 12px;
@@ -154,62 +183,8 @@ section + section {
   color: #4c4036;
 }
 
-.stack-summary {
-  border: 1px solid rgba(194, 151, 103, 0.26);
-  border-radius: 10px;
-  background: linear-gradient(165deg, rgba(255, 253, 246, 0.95), rgba(244, 234, 220, 0.92));
-  padding: 22px 24px;
-  display: grid;
-  gap: 18px;
-}
-
-.stack-summary-heading h2 {
-  margin: 0 0 6px;
-  font-size: 22px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: #5a3d1f;
-}
-
-.stack-summary-heading p {
-  margin: 0;
-  font-size: 14px;
-  color: #594b42;
-}
-
-.stack-summary-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  gap: 12px;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-}
-
-.stack-summary-list li {
-  border: 1px solid rgba(194, 151, 103, 0.24);
-  border-radius: 8px;
-  background: rgba(255, 253, 248, 0.92);
-  padding: 16px;
-  display: grid;
-  gap: 8px;
-  box-shadow: 0 8px 20px rgba(112, 81, 52, 0.06);
-}
-
-.stack-summary-list h3 {
-  margin: 0;
-  font-size: 16px;
-  color: #4a311c;
-}
-
-.stack-summary-list p {
-  margin: 0;
-  font-size: 14px;
-  color: #4c4036;
-}
-
 .projects h2,
-.matrix h2 {
+.observatory h2 {
   margin: 0 0 12px;
   font-size: 22px;
   text-transform: uppercase;
@@ -307,20 +282,20 @@ section + section {
   margin-left: auto;
 }
 
-.matrix-description {
+.observatory-description {
   margin: 0;
   font-size: 15px;
   color: #4e4237;
 }
 
-.matrix-grid {
+.observatory-grid {
   margin-top: 24px;
   display: grid;
   gap: 18px;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 }
 
-.matrix-card {
+.observatory-card {
   border: 1px solid rgba(194, 151, 103, 0.2);
   border-radius: 10px;
   background: rgba(255, 253, 247, 0.94);
@@ -330,20 +305,20 @@ section + section {
   box-shadow: 0 8px 18px rgba(109, 83, 58, 0.05);
 }
 
-.matrix-card-header {
+.observatory-card-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
 }
 
-.matrix-card-header h3 {
+.observatory-card-header h3 {
   margin: 0;
   font-size: 18px;
   color: #4a311c;
 }
 
-.matrix-category-summary {
+.observatory-category-summary {
   display: inline-block;
   font-size: 12px;
   text-transform: uppercase;
@@ -352,7 +327,7 @@ section + section {
   margin-top: 4px;
 }
 
-.matrix-tech-list {
+.observatory-tech-list {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -360,44 +335,44 @@ section + section {
   gap: 10px;
 }
 
-.matrix-tech-heading {
+.observatory-tech-heading {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
   gap: 10px;
 }
 
-.matrix-tech-name {
+.observatory-tech-name {
   font-weight: 600;
   color: #543721;
 }
 
-.matrix-tech-frequency {
+.observatory-tech-frequency {
   font-family: 'Source Code Pro', 'Courier New', Courier, monospace;
   font-size: 12px;
   color: #6d4a33;
 }
 
-.matrix-tech-projects {
+.observatory-tech-projects {
   margin: 4px 0 0;
   font-size: 13px;
   color: #564a3f;
 }
 
-.matrix-remaining {
+.observatory-remaining {
   border-top: 1px solid rgba(194, 151, 103, 0.18);
   padding-top: 8px;
   font-size: 13px;
   color: #4e4237;
 }
 
-.matrix-remaining summary {
+.observatory-remaining summary {
   cursor: pointer;
   font-weight: 600;
   color: #b7643c;
 }
 
-.matrix-remaining ul {
+.observatory-remaining ul {
   list-style: none;
   margin: 8px 0 0;
   padding: 0;
@@ -405,14 +380,14 @@ section + section {
   gap: 6px;
 }
 
-.matrix-remaining li {
+.observatory-remaining li {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
   gap: 8px;
 }
 
-.matrix-remaining li .matrix-tech-name {
+.observatory-remaining li .observatory-tech-name {
   font-weight: 500;
 }
 
@@ -425,6 +400,10 @@ section + section {
   .hero {
     grid-template-columns: 1fr;
     gap: 20px;
+  }
+
+  .language-switcher {
+    align-items: flex-start;
   }
 
   .hero-aside {
@@ -486,7 +465,7 @@ section + section {
     font-size: 14px;
   }
 
-  .matrix-grid {
+  .observatory-grid {
     gap: 16px;
   }
 }
