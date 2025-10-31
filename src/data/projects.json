@@ -14,8 +14,8 @@
     {
       "name": "Workbench UI",
       "summary": "Component exploration playground for experimenting with interface ideas and motion studies.",
-      "link": "https://example.com/workbench",
-      "source": "https://github.com/example/workbench-ui",
+      "link": "https://puzl.vercel.app/",
+      "source": "https://github.com/larsenok/puzl",
       "year": 2024,
       "technologies": ["React", "TypeScript", "Tailwind CSS"]
     },

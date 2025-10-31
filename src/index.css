@@ -129,6 +129,9 @@ section + section {
   padding: 20px 22px;
   display: grid;
   gap: 14px;
+  max-width: 520px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .contact-heading h2 {
@@ -137,12 +140,6 @@ section + section {
   letter-spacing: 1px;
   text-transform: uppercase;
   color: #5a3d1f;
-}
-
-.contact-heading p {
-  margin: 0;
-  font-size: 14px;
-  color: #594b42;
 }
 
 .contact-list {
@@ -154,11 +151,11 @@ section + section {
 }
 
 .contact-list li {
-  display: grid;
-  grid-template-columns: minmax(100px, auto) minmax(0, 1fr);
-  gap: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
   font-size: 14px;
-  align-items: center;
   background: rgba(226, 187, 140, 0.08);
   border: 1px solid rgba(194, 151, 103, 0.22);
   border-radius: 6px;
@@ -419,7 +416,6 @@ section + section {
   }
 
   .contact-list li {
-    grid-template-columns: 1fr;
     gap: 6px;
   }
 
