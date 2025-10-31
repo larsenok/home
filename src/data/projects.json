@@ -7,20 +7,10 @@
     { "name": "Next.js", "category": "Frontend" },
     { "name": "TypeScript", "category": "Language" },
     { "name": "Node.js", "category": "Backend" },
-    { "name": "AWS Lambda", "category": "Infrastructure" },
-    { "name": "Supabase", "category": "Storage" },
     { "name": "REST APIs", "category": "Integration" },
     { "name": "GraphQL", "category": "Integration" }
   ],
   "projects": [
-    {
-      "name": "Retro Portfolio",
-      "summary": "A single-page calling card that leans into vintage pixels, zine textures, and concise storytelling.",
-      "link": "https://example.com/retro",
-      "source": "https://github.com/example/retro-portfolio",
-      "year": 2023,
-      "technologies": ["Static HTML", "Vanilla CSS"]
-    },
     {
       "name": "Workbench UI",
       "summary": "Component exploration playground for experimenting with interface ideas and motion studies.",
@@ -28,26 +18,6 @@
       "source": "https://github.com/example/workbench-ui",
       "year": 2024,
       "technologies": ["React", "TypeScript", "Tailwind CSS"]
-    },
-    {
-      "name": "Toolbelt API",
-      "summary": "Utility endpoints that power personal automations, dashboards, and quick integrations.",
-      "link": "https://example.com/toolbelt",
-      "year": 2022,
-      "technologies": ["Node.js", "TypeScript", "REST APIs", "AWS Lambda"]
-    },
-    {
-      "name": "Signal Compass",
-      "summary": "A content routing experiment that turns newsletter ideas into tailored landing sequences in minutes.",
-      "link": "https://example.com/compass",
-      "year": 2025,
-      "technologies": ["Next.js", "React", "TypeScript", "GraphQL", "Tailwind CSS"]
-    },
-    {
-      "name": "Night Shift Automations",
-      "summary": "Routines that watch metrics after hours and nudge the right folks through chat and SMS.",
-      "link": "https://example.com/night-shift",
-      "technologies": ["Node.js", "TypeScript", "REST APIs", "Supabase", "AWS Lambda"]
     },
     {
       "name": "Open Energy",
@@ -63,6 +33,14 @@
       "link": "https://brain2-two.vercel.app/",
       "year": 2024,
       "technologies": ["React", "TypeScript", "Tailwind CSS"]
+    },
+    {
+      "name": "Retro Portfolio",
+      "summary": "A single-page calling card that leans into vintage pixels, zine textures, and concise storytelling.",
+      "link": "https://example.com/retro",
+      "source": "https://github.com/example/retro-portfolio",
+      "year": 2025,
+      "technologies": ["Static HTML", "Vanilla CSS"]
     }
   ]
 }
