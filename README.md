@@ -1,31 +1,19 @@
-# 1. Create project files directly in the current folder
-npm create vite@latest . -- --template react-ts --yes
+# Project Atlas
 
-# 2. Install Tailwind and its dependencies
-npm install -D tailwindcss@3.4.14 postcss autoprefixer
+A single-page catalog of projects, tooling, and contact details for Ole Larsen.
 
-# ⚠️ Note:
-# Tailwind v4.x removes its CLI binary and changes configuration behavior.
-# This setup uses v3.4.14 — the last version with a working `npx tailwindcss init -p`
-# and smooth compatibility with Vite + PostCSS setups.
+## Setup
 
-# 3. Initialize Tailwind configs
-npx tailwindcss init -p
+```bash
+npm install
+```
 
-# 4. Configure Tailwind
-# In `tailwind.config.cjs`, set:
-# content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"]
-sed -i 's|content: \[\]|content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"]|' tailwind.config.js
+## Available scripts
 
-# 5. Replace index.css with Tailwind directives
-echo -e "@tailwind base;\n@tailwind components;\n@tailwind utilities;" > src/index.css
+- `npm run dev` – start the local development server.
+- `npm run build` – type-check and produce a production build.
+- `npm run preview` – serve the built site locally.
 
-# 6. Remove unused style
-rm src/App.css
-sed -i '/import.*App.css/d;/^$/N;/^\n$/d' src/App.tsx
+## Content
 
-# 6. Run the dev server
-npm run dev
-
-# TODO
-- [ ] Document the kinds of projects that should be showcased in this atlas.
+Project metadata and tool usage live in `src/data/projects.json`. Update that file to adjust the projects or the tool observatory.

@@ -126,17 +126,13 @@ const projectSummaries: Record<string, Record<Language, string>> = {
     en: 'A structured note-taking app designed to help organize ideas and surface connections quickly.',
     no: 'En strukturert notatapp som gjør det lett å rydde i ideer og spotte koblinger kjapt.',
   },
-  'Wherego Puzzle': {
-    en: 'Website made for testing out combinations of digital puzzles.',
-    no: 'Nettside laget for å teste kombinasjoner av digitale puslespill.'
-  },
-  'Open Energy (IN-PROGRESS)': {
+  'Open Energy': {
     en: 'An interactive globe that maps real-time energy fluctuations using open data APIs.',
     no: 'En interaktiv globus som viser sanntidsvariasjoner i energibruk via åpne data-API-er.',
   },
   'Retro Portfolio': {
     en: 'A single-page calling card that leans into "vintage" design and concise storytelling.',
-    no: 'Et visittkort på én side som spiller på ™gammeldags™ design og enkel historiefortelling.',
+    no: 'Et visittkort på én side som spiller på «gammeldags» design og enkel historiefortelling.',
   },
 };
 
@@ -200,8 +196,6 @@ export default function App() {
     } else {
       map.set(tech.category, [tech]);
     }
-    existing.push(tech);
-    map.set(tech.category, existing);
     return map;
   }, new Map());
 

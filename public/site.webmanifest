@@ -1,0 +1,14 @@
+{
+  "name": "Project Atlas",
+  "short_name": "Atlas",
+  "icons": [
+    {
+      "src": "/olek-icon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any"
+    }
+  ],
+  "theme_color": "#f9f4ef",
+  "background_color": "#f9f4ef",
+  "display": "standalone"
+}

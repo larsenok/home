@@ -6,19 +6,9 @@
     { "name": "React", "category": "Frontend" },
     { "name": "Next.js", "category": "Frontend" },
     { "name": "TypeScript", "category": "Language" },
-    { "name": "Node.js", "category": "Backend" },
-    { "name": "REST APIs", "category": "Integration" },
-    { "name": "GraphQL", "category": "Integration" }
+    { "name": "REST APIs", "category": "Integration" }
   ],
   "projects": [
-    {
-      "name": "Workbench UI",
-      "summary": "Component exploration playground for experimenting with interface ideas and motion studies.",
-      "link": "https://puzl.vercel.app/",
-      "source": "https://github.com/larsenok/puzl",
-      "year": 2024,
-      "technologies": ["React", "TypeScript", "Tailwind CSS"]
-    },
     {
       "name": "Open Energy",
       "summary": "An interactive globe that maps real-time energy fluctuations using open data APIs.",
