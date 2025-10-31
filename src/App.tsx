@@ -19,6 +19,11 @@ type DataFile = {
   projects: Project[];
 };
 
+type StackHighlight = {
+  title: string;
+  description: string;
+};
+
 type TechnologyUsage = Technology & {
   usedBy: Project[];
   frequency: number;
@@ -35,6 +40,29 @@ const contactDetails = [
   { label: '<email>=', value: 'larsen.olek@gmail.com' },
   { label: '<location>=', value: 'Oslo, Norway' },
   { label: '<availability>=', value: 'Ready to help' },
+];
+
+const stackHighlights: StackHighlight[] = [
+  {
+    title: 'React + TypeScript',
+    description: 'Component-first ergonomics with type safety baked in.',
+  },
+  {
+    title: 'Vite Build System',
+    description: 'Lightning-fast local feedback loops and lean production bundles.',
+  },
+  {
+    title: 'Tailwind CSS',
+    description: 'Utility-first styling to keep experiments tactile and cohesive.',
+  },
+  {
+    title: 'Vercel Hosting',
+    description: 'Edge deployments with frictionless previews for every iteration.',
+  },
+  {
+    title: 'Supabase Backbone',
+    description: 'Managed Postgres, auth, and storage when the work needs a data pulse.',
+  },
 ];
 
 export default function App() {
@@ -124,6 +152,24 @@ export default function App() {
             lesson and end up on the shelf. This space is a living changelog of both, with context on what sparked
             each project and the stack that carried it over the finish line.
           </p>
+        </section>
+
+        <section className="stack-summary" aria-labelledby="stack-summary-heading">
+          <div className="stack-summary-heading">
+            <h2 id="stack-summary-heading">Build Sheet</h2>
+            <p>
+              A quick census of the tools powering this lab&mdash;scan it like a legend before diving into the
+              experiments below.
+            </p>
+          </div>
+          <ul className="stack-summary-list">
+            {stackHighlights.map((item) => (
+              <li key={item.title}>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </li>
+            ))}
+          </ul>
         </section>
 
         <section className="projects">
