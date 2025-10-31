@@ -27,7 +27,6 @@ type TechnologyUsage = Technology & {
 };
 
 type Language = 'en' | 'no';
-type LanguagePreference = 'system' | Language;
 
 type Translation = {
   heroLabel: string;
@@ -35,7 +34,6 @@ type Translation = {
   heroTagline: string;
   heroAside: string;
   contactHeading: string;
-  contactDescription: string;
   intro: string;
   projectsHeading: string;
   projectStackLabel: string;
@@ -47,14 +45,20 @@ type Translation = {
   observatoryFrequency: (count: number) => string;
   observatoryAwaiting: string;
   languageLabel: string;
-  languageOptions: { system: string; en: string; no: string };
+  languageOptions: { en: string; no: string };
 };
 
 const data = rawData as DataFile;
 
 const contactDetails: { label: string; value: Record<Language, string> }[] = [
   { label: '<name>=', value: { en: 'Ole Larsen', no: 'Ole Larsen' } },
-  { label: '<role>=', value: { en: 'Product-minded engineer & tinkerer', no: 'Produktorientert utvikler og fikler' } },
+  {
+    label: '<role>=',
+    value: {
+      en: 'Product-minded engineer & tinkerer',
+      no: 'Produktorientert utvikler og nysgjerrig problemløser',
+    },
+  },
   { label: '<email>=', value: { en: 'larsen.olek@gmail.com', no: 'larsen.olek@gmail.com' } },
   { label: '<location>=', value: { en: 'Oslo, Norway', no: 'Oslo, Norge' } },
   { label: '<availability>=', value: { en: 'Ready to help', no: 'Klar til å bidra' } },
@@ -69,7 +73,6 @@ const translations: Record<Language, Translation> = {
     heroAside:
       'Every line of code here chased a real itch. Explore the catalog, borrow an idea, or drop a line so we can swap stories.',
     contactHeading: 'Contact Signals',
-    contactDescription: 'Swap these placeholders with your own coordinates—everything is wired for quick edits.',
     intro:
       'There is always a weekend experiment simmering. Some mature into full releases, others teach a sharp lesson and end up on the shelf. This space is a living changelog of both, with context on what sparked each project and the stack that carried it over the finish line.',
     projectsHeading: 'Projects',
@@ -85,37 +88,33 @@ const translations: Record<Language, Translation> = {
     observatoryAwaiting: 'Awaiting first spotlight',
     languageLabel: 'Language',
     languageOptions: {
-      system: 'Auto (system)',
       en: 'English',
       no: 'Norsk',
     },
   },
   no: {
-    heroLabel: 'Personlig labbrapport',
+    heroLabel: 'Feltlogg',
     heroTitle: 'Prosjektatlas',
     heroTagline:
-      'Notater fra verkstedet—en hyllest til ferdige bygg, nesten-treff og verktøyene som får dem til å gå.',
+      'Notater fra verkstedet—en hyllest til ferdige bygg, nesten-treff og verktøyene som holder dem i gang.',
     heroAside:
       'Hver eneste kodelinje startet med en ekte kløe. Bla i katalogen, lån en idé eller ta kontakt så vi kan dele historier.',
     contactHeading: 'Kontaktspor',
-    contactDescription:
-      'Bytt ut disse plassholderne med dine egne koordinater—alt er rigget for raske endringer.',
     intro:
-      'Det putrer alltid et helgeprosjekt i bakgrunnen. Noen blir til fullverdige lanseringer, andre lærer bort en skarp leksjon og havner på hyllen. Denne siden er en levende endringslogg for begge deler, med kontekst om hva som tente gnisten og stacken som bar prosjektet i mål.',
+      'Det putrer alltid et helgeprosjekt i bakgrunnen. Noen modnes til fulle lanseringer, andre lærer bort en skarp leksjon og havner på hyllen. Denne siden er en levende logg for begge deler, med bakgrunn om hva som tente gnisten og verktøykassa som bar prosjektet i mål.',
     projectsHeading: 'Prosjekter',
-    projectStackLabel: 'Stack:',
+    projectStackLabel: 'Verktøykasse:',
     projectSourceLabel: 'Kilde',
     observatoryHeading: 'Verktøysobservatoriet',
     observatoryDescription:
-      'Et komprimert øyeblikksbilde av de mest brukte stackene—sortert etter disiplin og med en plan om å bli et radiellt varmekart som viser adopsjon etter aktualitet og intensitet.',
+      'Et komprimert øyeblikksbilde av de mest brukte stackene—sortert etter disiplin og med en plan om å bli et radialt varmekart som viser bruk etter aktualitet og intensitet.',
     observatoryToolCount: (count) => `${count} verktøy`,
     observatoryShowMore: (count) => `Vis ${count} til`,
     observatoryFrequency: (count) =>
       count > 0 ? `${count} prosjekt${count > 1 ? 'er' : ''}` : 'Utforskes',
-    observatoryAwaiting: 'Venter på første spotlight',
+    observatoryAwaiting: 'Venter på første innslag',
     languageLabel: 'Språk',
     languageOptions: {
-      system: 'Auto (system)',
       en: 'Engelsk',
       no: 'Norsk',
     },
@@ -129,42 +128,38 @@ const projectSummaries: Record<string, Record<Language, string>> = {
   },
   'Open Energy': {
     en: 'An interactive globe that maps real-time energy fluctuations using open data APIs.',
-    no: 'En interaktiv globus som viser sanntidsendringer i energibruk ved hjelp av åpne data-API-er.',
+    no: 'En interaktiv globus som viser sanntidsvariasjoner i energibruk via åpne data-API-er.',
   },
   Brain2: {
     en: 'A structured note-taking app designed to help organize ideas and surface connections quickly.',
-    no: 'En strukturert notatapp som hjelper til med å organisere idéer og avdekke sammenhenger raskt.',
+    no: 'En strukturert notatapp som gjør det lett å rydde i ideer og spotte koblinger kjapt.',
   },
   'Retro Portfolio': {
     en: 'A single-page calling card that leans into vintage pixels, zine textures, and concise storytelling.',
-    no: 'Et visittkort på én side som spiller på retro-piksler, zine-teksturer og konsis historiefortelling.',
+    no: 'Et visittkort på én side som spiller på retro-piksler, zine-teksturer og stram historiefortelling.',
   },
 };
 
 const formatYear = (year?: number) => (year ? year.toString() : undefined);
 
-const resolveLanguage = (preference: LanguagePreference): Language => {
-  if (preference === 'system') {
-    if (typeof navigator !== 'undefined' && navigator.language) {
-      const normalized = navigator.language.toLowerCase();
-      if (normalized.startsWith('en')) {
-        return 'en';
-      }
+const detectLanguage = (): Language => {
+  if (typeof navigator !== 'undefined') {
+    const languages = [navigator.language, ...(navigator.languages ?? [])]
+      .filter((value): value is string => Boolean(value))
+      .map((value) => value.toLowerCase());
+
+    if (languages.some((lang) => lang.startsWith('no') || lang.startsWith('nb') || lang.startsWith('nn'))) {
+      return 'no';
     }
-    return 'no';
   }
-  return preference;
+
+  return 'en';
 };
 
 export default function App() {
   const { technologies, projects } = data;
 
-  const [languagePreference, setLanguagePreference] = useState<LanguagePreference>('system');
-  const [language, setLanguage] = useState<Language>(() => resolveLanguage('system'));
-
-  useEffect(() => {
-    setLanguage(resolveLanguage(languagePreference));
-  }, [languagePreference]);
+  const [language, setLanguage] = useState<Language>(() => detectLanguage());
 
   useEffect(() => {
     document.documentElement.lang = language;
@@ -232,10 +227,9 @@ export default function App() {
             </label>
             <select
               id="language-select"
-              value={languagePreference}
-              onChange={(event) => setLanguagePreference(event.target.value as LanguagePreference)}
+              value={language}
+              onChange={(event) => setLanguage(event.target.value as Language)}
             >
-              <option value="system">{t.languageOptions.system}</option>
               <option value="en">{t.languageOptions.en}</option>
               <option value="no">{t.languageOptions.no}</option>
             </select>
@@ -248,7 +242,6 @@ export default function App() {
         <section className="contact-card" aria-labelledby="contact-heading">
           <div className="contact-heading">
             <h2 id="contact-heading">{t.contactHeading}</h2>
-            <p>{t.contactDescription}</p>
           </div>
           <ul className="contact-list">
             {contactDetails.map((item) => (
