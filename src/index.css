@@ -101,7 +101,8 @@ a:focus {
   font-size: 16px;
   color: #5a5148;
   max-width: 36ch;
-  white-space: nowrap;
+  white-space: pre-line;
+  word-break: break-word;
 }
 
 .hero-aside {
