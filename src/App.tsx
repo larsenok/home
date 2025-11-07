@@ -35,6 +35,9 @@ type Translation = {
   heroAside: string;
   contactHeading: string;
   intro: string;
+  personalHeading: string;
+  personalDescription: string;
+  personalSuggestions: string[];
   projectsHeading: string;
   projectStackLabel: string;
   projectSourceLabel: string;
@@ -74,7 +77,15 @@ const translations: Record<Language, Translation> = {
       'Explore the catalog, borrow an idea, or send a message.',
     contactHeading: 'Contact',
     intro:
-      '',
+      'Project Atlas is a working notebook disguised as a retro calling card—curating builds, experiments, and the tools that shaped them.',
+    personalHeading: 'Make it yours',
+    personalDescription:
+      'Want the page to feel like your own workshop? Try weaving in tiny rituals and artifacts from your process.',
+    personalSuggestions: [
+      'Swap the hero label for a handwritten motto or console prompt that sounds like you.',
+      'Slip a miniature sketch, badge, or favorite tool into the contact card margin.',
+      'Rotate a “currently building” snippet pulled from your freshest project notes.',
+    ],
     projectsHeading: 'Projects',
     projectStackLabel: 'Stack:',
     projectSourceLabel: 'Source',
@@ -101,7 +112,15 @@ const translations: Record<Language, Translation> = {
       'Bla i katalogen, lån en idé eller ta kontakt.',
     contactHeading: 'Kont',
     intro:
-      '',
+      'Prosjektatlas er et arbeidsnotat forkledd som et retro visittkort—med bygg, eksperimenter og verktøyene som formet dem.',
+    personalHeading: 'Gjør det til ditt eget',
+    personalDescription:
+      'Vil du at siden skal kjennes som ditt eget verksted? Flett inn små ritualer og spor fra prosessen din.',
+    personalSuggestions: [
+      'Bytt helteetiketten med et håndskrevet motto eller kommandolinje som høres ut som deg.',
+      'Legg inn en liten skisse, et merke eller favorittverktøy i kanten av kontaktkortet.',
+      'Vis en roterende «jobber med nå»-tekst hentet fra de ferskeste prosjektnotatene dine.',
+    ],
     projectsHeading: 'Prosjekter',
     projectStackLabel: 'Verktøykasse:',
     projectSourceLabel: 'Kilde',
@@ -266,6 +285,22 @@ export default function App() {
 
         <section className="intro">
           <p>{t.intro}</p>
+          <div className="kinetic-gallery" aria-hidden="true">
+            <span className="orb orb-1" />
+            <span className="orb orb-2" />
+            <span className="orb orb-3" />
+            <span className="orb orb-4" />
+          </div>
+        </section>
+
+        <section className="personalize">
+          <h2>{t.personalHeading}</h2>
+          <p className="personalize-description">{t.personalDescription}</p>
+          <ul className="personalize-list">
+            {t.personalSuggestions.map((suggestion) => (
+              <li key={suggestion}>{suggestion}</li>
+            ))}
+          </ul>
         </section>
 
         <section className="projects">
