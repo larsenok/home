@@ -10,25 +10,29 @@
   ],
   "projects": [
     {
-      "name": "Open Energy",
-      "summary": "An interactive globe that maps real-time energy fluctuations using open data APIs.",
-      "link": "https://github.com/larsenok/open-energy",
-      "source": "https://github.com/larsenok/open-energy",
-      "year": 2024,
-      "technologies": ["Next.js", "TypeScript", "Tailwind CSS", "REST APIs"]
-    },
-    {
-      "name": "Brain2",
-      "summary": "A structured note-taking app designed to help organize ideas and surface connections quickly.",
-      "link": "https://brain2-two.vercel.app/",
-      "year": 2024,
+      "name": "Puzl",
+      "link": "https://puzl.vercel.app/",
+      "source": "https://github.com/larsenok/puzl",
+      "year": 2025,
       "technologies": ["React", "TypeScript", "Tailwind CSS"]
     },
     {
+      "name": "Brain2",
+      "link": "https://brain2-two.vercel.app/",
+      "year": 2025,
+      "technologies": ["React", "TypeScript", "Tailwind CSS"]
+    },
+    {
+      "name": "Open Energy",
+      "link": "https://open-energy-blond.vercel.app/",
+      "source": "https://github.com/larsenok/open-energy",
+      "year": 2025,
+      "technologies": ["Next.js", "TypeScript", "Tailwind CSS", "REST APIs"]
+    },
+    {
       "name": "Retro Portfolio",
-      "summary": "A single-page calling card that leans into vintage pixels, zine textures, and concise storytelling.",
-      "link": "https://example.com/retro",
-      "source": "https://github.com/example/retro-portfolio",
+      "link": "https://home-rose-sigma.vercel.app/",
+      "source": "https://github.com/larsenok/home",
       "year": 2025,
       "technologies": ["Static HTML", "Vanilla CSS"]
     }

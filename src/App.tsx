@@ -55,8 +55,8 @@ const contactDetails: { label: string; value: Record<Language, string> }[] = [
   {
     label: '<role>=',
     value: {
-      en: 'Product-minded engineer & tinkerer',
-      no: 'Produktorientert utvikler og problemløser',
+      en: 'Result-oriented engineer & problem solver',
+      no: 'Resultatorientert utvikler og problemløser',
     },
   },
   { label: '<email>=', value: { en: 'larsen.olek@gmail.com', no: 'larsen.olek@gmail.com' } },
@@ -66,15 +66,15 @@ const contactDetails: { label: string; value: Record<Language, string> }[] = [
 
 const translations: Record<Language, Translation> = {
   en: {
-    heroLabel: 'Personal lab report',
+    heroLabel: '',
     heroTitle: 'Project Atlas',
     heroTagline:
-      'Notes from the workshop—celebrating finished builds, near-misses, and the tools that make them tick.',
+      'Notes from the workshop. \nFinished and on-going builds.',
     heroAside:
-      'Every line of code here chased a real itch. Explore the catalog, borrow an idea, or drop a line so we can swap stories.',
-    contactHeading: 'Contact Signals',
+      'Explore the catalog, borrow an idea, or send a message.',
+    contactHeading: 'Contact',
     intro:
-      'There is always a weekend experiment simmering. Some mature into full releases, others teach a sharp lesson and end up on the shelf. This space is a living changelog of both, with context on what sparked each project and the stack that carried it over the finish line.',
+      '',
     projectsHeading: 'Projects',
     projectStackLabel: 'Stack:',
     projectSourceLabel: 'Source',
@@ -93,15 +93,15 @@ const translations: Record<Language, Translation> = {
     },
   },
   no: {
-    heroLabel: 'Feltlogg',
+    heroLabel: '',
     heroTitle: 'Prosjektatlas',
     heroTagline:
-      'Notater fra verkstedet—en hyllest til ferdige bygg, nesten-treff og verktøyene som holder dem i gang.',
+      'Notater fra verkstedet. Ferdig og pågående arbeid.',
     heroAside:
       'Bla i katalogen, lån en idé eller ta kontakt.',
-    contactHeading: 'Kontaktspor',
+    contactHeading: 'Kont',
     intro:
-      'Det putrer alltid et helgeprosjekt i bakgrunnen. Noen modnes til fulle lanseringer, andre lærer bort en skarp leksjon og havner på hyllen. Denne siden er en levende logg for begge deler, med bakgrunn om hva som tente gnisten og verktøykassa som bar prosjektet i mål.',
+      '',
     projectsHeading: 'Prosjekter',
     projectStackLabel: 'Verktøykasse:',
     projectSourceLabel: 'Kilde',
@@ -122,17 +122,21 @@ const translations: Record<Language, Translation> = {
 };
 
 const projectSummaries: Record<string, Record<Language, string>> = {
+  Puzl: {
+    en: 'A simple homemade puzzle game with multiple difficulty levels - a fresh twist on sudoku and number matching.',
+    no: 'Et enkelt, hjemmelaget puslespill med flere vanskelighetsgrader - en ny vri på sudoku og tallmatching.',
+  },
   Brain2: {
     en: 'A structured note-taking app designed to help organize ideas and surface connections quickly.',
     no: 'En strukturert notatapp som gjør det lett å rydde i ideer og spotte koblinger kjapt.',
   },
   'Open Energy': {
-    en: 'An interactive globe that maps real-time energy fluctuations using open data APIs.',
-    no: 'En interaktiv globus som viser sanntidsvariasjoner i energibruk via åpne data-API-er.',
+    en: 'An interactive page for testing and visualization of gathered data and real-time updates, using open data APIs.',
+    no: 'En interaktiv side for testing og visualisering av innsamlet data og sanntidsoppdatering, via åpne data-API-er.',
   },
   'Retro Portfolio': {
-    en: 'A single-page calling card that leans into "vintage" design and concise storytelling.',
-    no: 'Et visittkort på én side som spiller på «gammeldags» design og enkel historiefortelling.',
+    en: 'This page! A single-page calling card that leans into "vintage" design and concise storytelling.',
+    no: 'Denne siden! Et visittkort på én side som spiller på «gammeldags» design og enkel historiefortelling.',
   },
 };
 
