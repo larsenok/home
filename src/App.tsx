@@ -35,9 +35,6 @@ type Translation = {
   heroAside: string;
   contactHeading: string;
   intro: string;
-  personalHeading: string;
-  personalDescription: string;
-  personalSuggestions: string[];
   projectsHeading: string;
   projectStackLabel: string;
   projectSourceLabel: string;
@@ -65,27 +62,33 @@ const contactDetails: { label: string; value: Record<Language, string> }[] = [
   { label: '<email>=', value: { en: 'larsen.olek@gmail.com', no: 'larsen.olek@gmail.com' } },
   { label: '<location>=', value: { en: 'Oslo, Norway', no: 'Oslo, Norge' } },
   { label: '<availability>=', value: { en: 'Ready to help', no: 'Klar til å bidra' } },
+  {
+    label: '<currently_building>=',
+    value: {
+      en: 'Pocket-sized data synths & tactile UI experiments',
+      no: 'Lommemålte datasynther og taktile UI-eksperimenter',
+    },
+  },
+  {
+    label: '<ritual>=',
+    value: {
+      en: 'Early runs, late-night sketches, strong coffee',
+      no: 'Tidlige løpeturer, nattlige skisser, sterk kaffe',
+    },
+  },
 ];
 
 const translations: Record<Language, Translation> = {
   en: {
-    heroLabel: '',
+    heroLabel: 'Ole’s workshop log',
     heroTitle: 'Project Atlas',
     heroTagline:
       'Notes from the workshop. \nFinished and on-going builds.',
     heroAside:
-      'Explore the catalog, borrow an idea, or send a message.',
+      'Explore the catalog, borrow an idea, or send a message. Fresh snippets surface from field notes each week.',
     contactHeading: 'Contact',
     intro:
-      'Project Atlas is a working notebook disguised as a retro calling card—curating builds, experiments, and the tools that shaped them.',
-    personalHeading: 'Make it yours',
-    personalDescription:
-      'Want the page to feel like your own workshop? Try weaving in tiny rituals and artifacts from your process.',
-    personalSuggestions: [
-      'Swap the hero label for a handwritten motto or console prompt that sounds like you.',
-      'Slip a miniature sketch, badge, or favorite tool into the contact card margin.',
-      'Rotate a “currently building” snippet pulled from your freshest project notes.',
-    ],
+      'Project Atlas is a working notebook disguised as a retro calling card—curating builds, experiments, and the tools that shaped them. Occasional doodles in the margins hint at the next build.',
     projectsHeading: 'Projects',
     projectStackLabel: 'Stack:',
     projectSourceLabel: 'Source',
@@ -104,23 +107,15 @@ const translations: Record<Language, Translation> = {
     },
   },
   no: {
-    heroLabel: '',
+    heroLabel: 'Oles verkstedlogg',
     heroTitle: 'Prosjektatlas',
     heroTagline:
       'Notater fra verkstedet. Ferdig og pågående arbeid.',
     heroAside:
-      'Bla i katalogen, lån en idé eller ta kontakt.',
+      'Bla i katalogen, lån en idé eller ta kontakt. Nye glimt fra feltloggene dukker opp hver uke.',
     contactHeading: 'Kont',
     intro:
-      'Prosjektatlas er et arbeidsnotat forkledd som et retro visittkort—med bygg, eksperimenter og verktøyene som formet dem.',
-    personalHeading: 'Gjør det til ditt eget',
-    personalDescription:
-      'Vil du at siden skal kjennes som ditt eget verksted? Flett inn små ritualer og spor fra prosessen din.',
-    personalSuggestions: [
-      'Bytt helteetiketten med et håndskrevet motto eller kommandolinje som høres ut som deg.',
-      'Legg inn en liten skisse, et merke eller favorittverktøy i kanten av kontaktkortet.',
-      'Vis en roterende «jobber med nå»-tekst hentet fra de ferskeste prosjektnotatene dine.',
-    ],
+      'Prosjektatlas er et arbeidsnotat forkledd som et retro visittkort—med bygg, eksperimenter og verktøyene som formet dem. Små tegninger i margen hinter om neste prosjekt.',
     projectsHeading: 'Prosjekter',
     projectStackLabel: 'Verktøykasse:',
     projectSourceLabel: 'Kilde',
@@ -291,16 +286,6 @@ export default function App() {
             <span className="orb orb-3" />
             <span className="orb orb-4" />
           </div>
-        </section>
-
-        <section className="personalize">
-          <h2>{t.personalHeading}</h2>
-          <p className="personalize-description">{t.personalDescription}</p>
-          <ul className="personalize-list">
-            {t.personalSuggestions.map((suggestion) => (
-              <li key={suggestion}>{suggestion}</li>
-            ))}
-          </ul>
         </section>
 
         <section className="projects">
