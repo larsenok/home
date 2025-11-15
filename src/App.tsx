@@ -1,386 +1,146 @@
-import { useEffect, useMemo, useState } from 'react';
-import rawData from './data/projects.json';
+import './index.css';
 
-type Technology = {
-  name: string;
-  category: string;
-};
-
-type Project = {
-  name: string;
-  summary: string;
-  link: string;
-  source?: string;
-  year?: number;
-  technologies: string[];
-};
-
-type DataFile = {
-  technologies: Technology[];
-  projects: Project[];
-};
-
-type TechnologyUsage = Technology & {
-  usedBy: Project[];
-  frequency: number;
-  weight: number;
-};
-
-type Language = 'en' | 'no';
-
-type Translation = {
-  heroLabel: string;
-  heroTitle: string;
-  heroTagline: string;
-  heroAside: string;
-  contactHeading: string;
-  intro: string;
-  projectsHeading: string;
-  projectStackLabel: string;
-  projectSourceLabel: string;
-  observatoryHeading: string;
-  observatoryDescription: string;
-  observatoryToolCount: (count: number) => string;
-  observatoryShowMore: (count: number) => string;
-  observatoryFrequency: (count: number) => string;
-  observatoryAwaiting: string;
-  languageLabel: string;
-  languageOptions: { en: string; no: string };
-};
-
-const data = rawData as DataFile;
-
-const contactDetails: { label: string; value: Record<Language, string> }[] = [
-  { label: '<name>=', value: { en: 'Ole Larsen', no: 'Ole Larsen' } },
+const projects = [
   {
-    label: '<role>=',
-    value: {
-      en: 'Result-oriented engineer & problem solver',
-      no: 'Resultatorientert utvikler og problemløser',
-    },
-  },
-  { label: '<email>=', value: { en: 'larsen.olek@gmail.com', no: 'larsen.olek@gmail.com' } },
-  { label: '<location>=', value: { en: 'Oslo, Norway', no: 'Oslo, Norge' } },
-  { label: '<availability>=', value: { en: 'Ready to help', no: 'Klar til å bidra' } },
-  {
-    label: '<currently_building>=',
-    value: {
-      en: 'Pocket-sized data synths & tactile UI experiments',
-      no: 'Lommemålte datasynther og taktile UI-eksperimenter',
-    },
+    title: 'Puzl',
+    description:
+      'A logic-first puzzle platform that adapts to the player, streaming custom difficulty ramps and celebrating wins with tactile micro-interactions.',
+    caseStudy: 'https://puzl.vercel.app/',
+    thumbnailNote: 'Use a crisp board mockup with highlighted number tiles against a soft gradient backdrop.',
+    accent: 'linear-gradient(135deg, #f8d1ff, #a07be9)',
+    visualLabel: 'Abstract render of the adaptive puzzle dashboard',
   },
   {
-    label: '<ritual>=',
-    value: {
-      en: 'Early runs, late-night sketches, strong coffee',
-      no: 'Tidlige løpeturer, nattlige skisser, sterk kaffe',
-    },
+    title: 'Brain2',
+    description:
+      'Networked notebooks for fast-moving product teams—capture ideas, surface relationships, and slot insights straight into decision flows.',
+    caseStudy: 'https://brain2-two.vercel.app/',
+    thumbnailNote: 'Layer overlapping cards that hint at graph connections with a charcoal-to-indigo wash.',
+    accent: 'linear-gradient(135deg, #d7f3ff, #6aa2ff)',
+    visualLabel: 'Stylised cards representing connected notes',
+  },
+  {
+    title: 'Open Energy',
+    description:
+      'Real-time monitoring for energy co-ops, translating live grid metrics into calm, scannable stories for field teams and stakeholders.',
+    caseStudy: 'https://open-energy-blond.vercel.app/',
+    thumbnailNote: 'Display a live data panel with a neon accent line chart on deep navy.',
+    accent: 'linear-gradient(135deg, #ffe6c3, #ff8a57)',
+    visualLabel: 'Dashboard snapshot showing live grid analytics',
   },
 ];
 
-const translations: Record<Language, Translation> = {
-  en: {
-    heroLabel: 'Ole’s workshop log',
-    heroTitle: 'Project Atlas',
-    heroTagline:
-      'Notes from the workshop. \nFinished and on-going builds.',
-    heroAside:
-      'Explore the catalog, borrow an idea, or send a message. Fresh snippets surface from field notes each week.',
-    contactHeading: 'Contact',
-    intro:
-      'Project Atlas is a working notebook disguised as a retro calling card—curating builds, experiments, and the tools that shaped them. Occasional doodles in the margins hint at the next build.',
-    projectsHeading: 'Projects',
-    projectStackLabel: 'Stack:',
-    projectSourceLabel: 'Source',
-    observatoryHeading: 'Toolchain Observatory',
-    observatoryDescription:
-      'A condensed snapshot of the stacks that show up most—grouped by discipline and begging to become a radial heatmap that plots adoption by recency and intensity.',
-    observatoryToolCount: (count) => `${count} ${count === 1 ? 'tool' : 'tools'}`,
-    observatoryShowMore: (count) => `Show ${count} more`,
-    observatoryFrequency: (count) =>
-      count > 0 ? `${count} project${count > 1 ? 's' : ''}` : 'Exploring',
-    observatoryAwaiting: 'Awaiting first spotlight',
-    languageLabel: 'Language',
-    languageOptions: {
-      en: 'English',
-      no: 'Norsk',
-    },
+const contactDetails = [
+  { label: 'Email', value: 'larsen.olek@gmail.com', href: 'mailto:larsen.olek@gmail.com' },
+  { label: 'Location', value: 'Oslo, Norway' },
+  { label: 'Phone', value: '+47 900 00 000', href: 'tel:+4790000000' },
+  {
+    label: 'Availability',
+    value: 'Accepting new product briefs for Q3',
   },
-  no: {
-    heroLabel: 'Oles verkstedlogg',
-    heroTitle: 'Prosjektatlas',
-    heroTagline:
-      'Notater fra verkstedet. Ferdig og pågående arbeid.',
-    heroAside:
-      'Bla i katalogen, lån en idé eller ta kontakt. Nye glimt fra feltloggene dukker opp hver uke.',
-    contactHeading: 'Kont',
-    intro:
-      'Prosjektatlas er et arbeidsnotat forkledd som et retro visittkort—med bygg, eksperimenter og verktøyene som formet dem. Små tegninger i margen hinter om neste prosjekt.',
-    projectsHeading: 'Prosjekter',
-    projectStackLabel: 'Verktøykasse:',
-    projectSourceLabel: 'Kilde',
-    observatoryHeading: 'Verktøysobservatoriet',
-    observatoryDescription:
-      'Et komprimert øyeblikksbilde av de mest brukte stackene—sortert etter disiplin og med en plan om å bli et radialt varmekart som viser bruk etter aktualitet og intensitet.',
-    observatoryToolCount: (count) => `${count} verktøy`,
-    observatoryShowMore: (count) => `Vis ${count} til`,
-    observatoryFrequency: (count) =>
-      count > 0 ? `${count} prosjekt${count > 1 ? 'er' : ''}` : 'Utforskes',
-    observatoryAwaiting: 'Venter på første innslag',
-    languageLabel: 'Språk',
-    languageOptions: {
-      en: 'Engelsk',
-      no: 'Norsk',
-    },
-  },
-};
-
-const projectSummaries: Record<string, Record<Language, string>> = {
-  Puzl: {
-    en: 'A simple homemade puzzle game with multiple difficulty levels - a fresh twist on sudoku and number matching.',
-    no: 'Et enkelt, hjemmelaget puslespill med flere vanskelighetsgrader - en ny vri på sudoku og tallmatching.',
-  },
-  Brain2: {
-    en: 'A structured note-taking app designed to help organize ideas and surface connections quickly.',
-    no: 'En strukturert notatapp som gjør det lett å rydde i ideer og spotte koblinger kjapt.',
-  },
-  'Open Energy': {
-    en: 'An interactive page for testing and visualization of gathered data and real-time updates, using open data APIs.',
-    no: 'En interaktiv side for testing og visualisering av innsamlet data og sanntidsoppdatering, via åpne data-API-er.',
-  },
-  'Retro Portfolio': {
-    en: 'This page! A single-page calling card that leans into "vintage" design and concise storytelling.',
-    no: 'Denne siden! Et visittkort på én side som spiller på «gammeldags» design og enkel historiefortelling.',
-  },
-};
-
-const formatYear = (year?: number) => (year ? year.toString() : undefined);
-
-const detectLanguage = (): Language => {
-  if (typeof navigator !== 'undefined') {
-    const navigatorLanguages =
-      typeof navigator.languages !== 'undefined'
-        ? Array.from(navigator.languages)
-        : [];
-
-    const languages = [navigator.language, ...navigatorLanguages]
-      .filter((value): value is string => Boolean(value))
-      .map((value) => value.toLowerCase());
-
-    if (languages.some((lang) => lang.startsWith('no') || lang.startsWith('nb') || lang.startsWith('nn'))) {
-      return 'no';
-    }
-  }
-
-  return 'en';
-};
+];
 
 export default function App() {
-  const { technologies, projects } = data;
-
-  const [language, setLanguage] = useState<Language>(() => detectLanguage());
-
-  useEffect(() => {
-    document.documentElement.lang = language;
-  }, [language]);
-
-  const t = translations[language];
-
-  const sortedTechnologies = [...technologies].sort((a, b) => {
-    if (a.category === b.category) {
-      return a.name.localeCompare(b.name);
-    }
-    return a.category.localeCompare(b.category);
-  });
-
-  const projectTechSets = new Map(projects.map((project) => [project.name, new Set(project.technologies)]));
-  const technologyUsage: TechnologyUsage[] = sortedTechnologies.map((tech) => {
-    const usedBy = projects.filter((project) => {
-      const techSet = projectTechSets.get(project.name);
-      return techSet !== undefined && techSet.has(tech.name);
-    });
-    return {
-      ...tech,
-      usedBy,
-      frequency: usedBy.length,
-      weight: Math.round((usedBy.length / projects.length) * 100),
-    };
-  });
-
-  const groupedByCategory = technologyUsage.reduce<Map<string, TechnologyUsage[]>>((map, tech) => {
-    const existing = map.get(tech.category);
-    if (existing !== undefined) {
-      existing.push(tech);
-    } else {
-      map.set(tech.category, [tech]);
-    }
-    return map;
-  }, new Map());
-
-  const condensedMatrix = Array.from(groupedByCategory.entries())
-    .map(([category, techs]) => {
-      const sorted = [...techs].sort((a, b) => {
-        if (b.frequency === a.frequency) {
-          return a.name.localeCompare(b.name);
-        }
-        return b.frequency - a.frequency;
-      });
-
-      return {
-        category,
-        toolCount: sorted.length,
-        highlighted: sorted.slice(0, 3),
-        remaining: sorted.slice(3),
-      };
-    })
-    .sort((a, b) => a.category.localeCompare(b.category));
-
-  const projectSummariesForLanguage = useMemo(() => projectSummaries, []);
-
   return (
-    <div className="page">
-      <header className="hero">
-        <div>
-          <p className="hero-label">{t.heroLabel}</p>
-          <h1>{t.heroTitle}</h1>
-          <p className="tagline">{t.heroTagline}</p>
-        </div>
-        <aside className="hero-aside">
-          <div className="language-switcher">
-            <label className="language-switcher-label" htmlFor="language-select">
-              {t.languageLabel}
-            </label>
-            <select
-              id="language-select"
-              value={language}
-              onChange={(event) => setLanguage(event.target.value as Language)}
-            >
-              <option value="en">{t.languageOptions.en}</option>
-              <option value="no">{t.languageOptions.no}</option>
-            </select>
-          </div>
-          <p>{t.heroAside}</p>
-        </aside>
+    <div className="site">
+      <header className="site-header">
+        <a className="site-logo" href="/">
+          Ole Larsen
+        </a>
+        <nav className="site-nav">
+          <a href="/wiki">Wiki</a>
+          <a className="nav-cta" href="#contact">
+            Contact
+          </a>
+        </nav>
       </header>
 
       <main>
-        <section className="contact-card" aria-labelledby="contact-heading">
-          <div className="contact-heading">
-            <h2 id="contact-heading">{t.contactHeading}</h2>
-          </div>
-          <ul className="contact-list">
-            {contactDetails.map((item) => (
-              <li key={item.label}>
-                <span className="contact-label">{item.label}</span>
-                <span className="contact-value">{item.value[language]}</span>
-              </li>
-            ))}
-          </ul>
-        </section>
-
-        <section className="intro">
-          <p>{t.intro}</p>
-          <div className="kinetic-gallery" aria-hidden="true">
-            <span className="orb orb-1" />
-            <span className="orb orb-2" />
-            <span className="orb orb-3" />
-            <span className="orb orb-4" />
+        <section className="hero" id="top">
+          <div className="hero-copy">
+            <p className="eyebrow">Freelance Product Designer & Frontend Partner</p>
+            <h1>Designing calm digital experiences for teams who ship fast.</h1>
+            <p className="hero-subtitle">
+              I help founders and product leads translate complex systems into intuitive journeys—strategy, interface, and polished build support.
+            </p>
+            <a className="primary-button" href="#contact">
+              Start a Project
+            </a>
+            <p className="hero-visual-note">
+              Suggested hero treatment: pair this copy with a soft spotlight gradient over a monochrome studio portrait or a macro shot of interface sketches.
+            </p>
           </div>
         </section>
 
-        <section className="projects">
-          <h2>{t.projectsHeading}</h2>
-          <ul className="project-list">
-            {projects.map((project) => {
-              const yearText = formatYear(project.year);
-              const projectSummary = projectSummariesForLanguage[project.name];
-              const localizedSummary =
-                projectSummary !== undefined && projectSummary[language] !== undefined
-                  ? projectSummary[language]
-                  : project.summary;
-                  
-              return (
-                <li key={project.name} className="project-card">
-                  <div className="project-heading">
-                    <h3>
-                      <a href={project.link} target="_blank" rel="noreferrer">
-                        {project.name}
-                      </a>
-                    </h3>
-                    {yearText ? <span className="project-year">{yearText}</span> : null}
-                  </div>
-                  <p className="project-summary">{localizedSummary}</p>
-                  <div className="project-meta">
-                    <span className="meta-label">{t.projectStackLabel}</span>
-                    <ul className="tech-list">
-                      {project.technologies.map((tech) => (
-                        <li key={tech}>{tech}</li>
-                      ))}
-                    </ul>
-                    {project.source ? (
-                      <a className="source-link" href={project.source} target="_blank" rel="noreferrer">
-                        {t.projectSourceLabel}
-                      </a>
-                    ) : null}
-                  </div>
-                </li>
-              );
-            })}
-          </ul>
-        </section>
-
-        <section className="observatory">
-          <h2>{t.observatoryHeading}</h2>
-          <p className="observatory-description">{t.observatoryDescription}</p>
-          <div className="observatory-grid">
-            {condensedMatrix.map((entry) => (
-              <article key={entry.category} className="observatory-card">
-                <header className="observatory-card-header">
-                  <div>
-                    <h3>{entry.category}</h3>
-                    <span className="observatory-category-summary">{t.observatoryToolCount(entry.toolCount)}</span>
-                  </div>
-                </header>
-                <ul className="observatory-tech-list">
-                  {entry.highlighted.map((tech) => (
-                    <li key={`${entry.category}-${tech.name}`}>
-                      <div className="observatory-tech-heading">
-                        <span className="observatory-tech-name">{tech.name}</span>
-                        <span className="observatory-tech-frequency">
-                          {t.observatoryFrequency(tech.frequency)}
-                        </span>
-                      </div>
-                      <p className="observatory-tech-projects">
-                        {tech.usedBy.length > 0
-                          ? tech.usedBy.map((project) => project.name).join(', ')
-                          : t.observatoryAwaiting}
-                      </p>
-                    </li>
-                  ))}
-                </ul>
-                {entry.remaining.length > 0 ? (
-                  <details className="observatory-remaining">
-                    <summary>{t.observatoryShowMore(entry.remaining.length)}</summary>
-                    <ul>
-                      {entry.remaining.map((tech) => (
-                        <li key={`${entry.category}-${tech.name}-extra`}>
-                          <div className="observatory-tech-heading">
-                            <span className="observatory-tech-name">{tech.name}</span>
-                            <span className="observatory-tech-frequency">
-                              {t.observatoryFrequency(tech.frequency)}
-                            </span>
-                          </div>
-                        </li>
-                      ))}
-                    </ul>
-                  </details>
-                ) : null}
+        <section className="projects" id="projects">
+          <div className="section-heading">
+            <h2>Top Collaborations</h2>
+            <p>
+              Three recent builds that capture how strategy, craft, and measured motion come together across different problem spaces.
+            </p>
+          </div>
+          <div className="project-grid">
+            {projects.map((project) => (
+              <article className="project-card" key={project.title}>
+                <figure
+                  className="project-thumbnail"
+                  style={{ backgroundImage: project.accent }}
+                  aria-label={project.visualLabel}
+                />
+                <div className="project-body">
+                  <h3>{project.title}</h3>
+                  <p>{project.description}</p>
+                  <a className="text-link" href={project.caseStudy} target="_blank" rel="noreferrer">
+                    Case Study
+                  </a>
+                  <p className="project-visual-note">{project.thumbnailNote}</p>
+                </div>
               </article>
             ))}
           </div>
         </section>
+
+        <section className="about" id="about">
+          <div className="section-heading">
+            <h2>About Me</h2>
+          </div>
+          <p>
+            I blend product strategy with hands-on design and build, partnering with teams from first sketch to launch-ready handoff. Past gigs range from data-rich dashboards to tactile creative tools, all guided by clear storytelling and measurable impact.
+          </p>
+        </section>
+
+        <section className="contact" id="contact">
+          <div className="section-heading">
+            <h2>Let’s Connect</h2>
+            <p>Drop a note with your project goals, or grab time directly on my calendar.</p>
+          </div>
+          <ul className="contact-list">
+            {contactDetails.map((detail) => (
+              <li key={detail.label}>
+                <span className="contact-label">{detail.label}</span>
+                {detail.href ? (
+                  <a href={detail.href}>{detail.value}</a>
+                ) : (
+                  <span>{detail.value}</span>
+                )}
+              </li>
+            ))}
+          </ul>
+          <a
+            className="secondary-button"
+            href="https://cal.com/ole-larsen/intro"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Schedule a 20 min intro call
+          </a>
+        </section>
       </main>
 
+      <footer className="site-footer">
+        <p>© {new Date().getFullYear()} Ole Larsen. Independent designer & builder.</p>
+        <a href="/wiki">Wiki</a>
+      </footer>
     </div>
   );
 }
