@@ -5,15 +5,15 @@
 }
 
 :root {
-  color-scheme: dark;
-  --color-bg: #050b16;
-  --color-panel: rgba(15, 23, 42, 0.7);
-  --color-panel-strong: rgba(17, 24, 39, 0.85);
-  --color-text: #f4f6ff;
-  --color-text-muted: #9aa7cc;
-  --color-accent: #7dd3fc;
-  --color-accent-soft: rgba(125, 211, 252, 0.18);
-  --shadow-soft: 0 24px 50px rgba(2, 6, 23, 0.45);
+  color-scheme: light;
+  --color-bg: #f6f8ff;
+  --color-panel: #ffffff;
+  --color-panel-strong: #eef2ff;
+  --color-text: #0f172a;
+  --color-text-muted: #475569;
+  --color-accent: #2563eb;
+  --color-accent-soft: rgba(37, 99, 235, 0.12);
+  --shadow-soft: 0 20px 40px rgba(15, 23, 42, 0.12);
   --radius-large: 28px;
   --radius-medium: 20px;
   --radius-small: 14px;
@@ -23,13 +23,9 @@
 body {
   margin: 0;
   font-family: 'Inter', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  background: radial-gradient(circle at 10% 20%, rgba(56, 189, 248, 0.18), transparent 60%),
-    radial-gradient(circle at 80% 0%, rgba(129, 140, 248, 0.22), transparent 58%),
-    radial-gradient(circle at 50% 90%, rgba(236, 72, 153, 0.14), transparent 55%),
-    var(--color-bg);
+  background: var(--color-bg);
   color: var(--color-text);
   line-height: 1.6;
-  background-attachment: fixed;
 }
 
 a {
@@ -86,16 +82,16 @@ a:focus {
 }
 
 .nav-cta {
-  background-color: rgba(125, 211, 252, 0.16);
+  background-color: var(--color-accent-soft);
   color: var(--color-accent);
   font-weight: 600;
-  border: 1px solid rgba(125, 211, 252, 0.4);
+  border: 1px solid rgba(37, 99, 235, 0.24);
 }
 
 .nav-cta:hover,
 .nav-cta:focus {
-  background-color: rgba(125, 211, 252, 0.24);
-  color: #0ea5e9;
+  background-color: rgba(37, 99, 235, 0.18);
+  color: #1d4ed8;
 }
 
 main {
@@ -105,14 +101,13 @@ main {
 }
 
 .hero {
-  background: linear-gradient(135deg, rgba(15, 23, 42, 0.75), rgba(30, 64, 175, 0.45));
+  background: var(--color-panel-strong);
   border-radius: var(--radius-large);
   padding: clamp(36px, 6vw, 64px);
   box-shadow: var(--shadow-soft);
   position: relative;
   overflow: hidden;
-  backdrop-filter: blur(18px);
-  border: 1px solid rgba(148, 163, 184, 0.18);
+  border: 1px solid rgba(15, 23, 42, 0.08);
 }
 
 .hero-copy {
@@ -159,16 +154,16 @@ main {
 }
 
 .primary-button {
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.9), rgba(14, 165, 233, 0.9));
-  color: #0f172a;
-  box-shadow: 0 18px 32px rgba(2, 132, 199, 0.35);
+  background: var(--color-accent);
+  color: #ffffff;
+  box-shadow: 0 12px 30px rgba(37, 99, 235, 0.25);
   width: fit-content;
 }
 
 .primary-button:hover,
 .primary-button:focus {
   transform: translateY(-2px);
-  background: linear-gradient(135deg, rgba(125, 211, 252, 1), rgba(14, 165, 233, 1));
+  background-color: #1d4ed8;
 }
 
 .section-heading {
@@ -207,25 +202,22 @@ main {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: 14px;
-  border: 1px solid rgba(148, 163, 184, 0.18);
+  border: 1px solid rgba(15, 23, 42, 0.08);
   box-shadow: var(--shadow-soft);
   transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
-  backdrop-filter: blur(14px);
 }
 
 .project-card:hover,
 .project-card:focus-within {
   transform: translateY(-4px);
-  border-color: rgba(125, 211, 252, 0.4);
-  box-shadow: 0 26px 44px rgba(8, 19, 45, 0.4);
+  border-color: rgba(37, 99, 235, 0.24);
+  box-shadow: 0 24px 40px rgba(15, 23, 42, 0.18);
 }
 
 .project-thumbnail {
   border-radius: var(--radius-small);
-  background-size: cover;
-  background-position: center;
   aspect-ratio: 5 / 3;
-  box-shadow: inset 0 0 0 1px rgba(226, 232, 240, 0.25);
+  border: 1px solid rgba(15, 23, 42, 0.08);
 }
 
 .project-body {
@@ -261,8 +253,7 @@ main {
   box-shadow: var(--shadow-soft);
   display: grid;
   gap: 16px;
-  border: 1px solid rgba(148, 163, 184, 0.18);
-  backdrop-filter: blur(16px);
+  border: 1px solid rgba(15, 23, 42, 0.08);
 }
 
 .about p {
@@ -278,8 +269,7 @@ main {
   padding: clamp(28px, 5vw, 40px);
   border-radius: var(--radius-medium);
   box-shadow: var(--shadow-soft);
-  border: 1px solid rgba(148, 163, 184, 0.18);
-  backdrop-filter: blur(14px);
+  border: 1px solid rgba(15, 23, 42, 0.08);
 }
 
 .contact-list {
@@ -313,15 +303,15 @@ main {
 }
 
 .secondary-button {
-  border: 1px solid rgba(125, 211, 252, 0.4);
+  border: 1px solid rgba(37, 99, 235, 0.24);
   color: var(--color-accent);
-  background-color: rgba(125, 211, 252, 0.08);
+  background-color: rgba(37, 99, 235, 0.08);
   width: fit-content;
 }
 
 .secondary-button:hover,
 .secondary-button:focus {
-  background-color: rgba(125, 211, 252, 0.18);
+  background-color: rgba(37, 99, 235, 0.16);
 }
 
 .site-footer {

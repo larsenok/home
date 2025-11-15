@@ -6,7 +6,7 @@ const projects = [
     description:
       'Built a self-tuning puzzle engine with live feedback loops so players always feel a step ahead of the challenge.',
     caseStudy: 'https://puzl.vercel.app/',
-    accent: 'linear-gradient(135deg, rgba(76, 0, 130, 0.4), rgba(59, 130, 246, 0.6))',
+    accent: '#dbe4ff',
     visualLabel: 'Abstract render of the adaptive puzzle dashboard',
   },
   {
@@ -14,7 +14,7 @@ const projects = [
     description:
       'Prototyped and shipped a networked notes tool that maps team ideas in real time and keeps context close to the work.',
     caseStudy: 'https://brain2-two.vercel.app/',
-    accent: 'linear-gradient(135deg, rgba(13, 148, 136, 0.45), rgba(14, 165, 233, 0.65))',
+    accent: '#c7f9cc',
     visualLabel: 'Stylised cards representing connected notes',
   },
   {
@@ -22,7 +22,7 @@ const projects = [
     description:
       'Designed grid monitoring dashboards that translate dense telemetry into calm stories field crews can act on instantly.',
     caseStudy: 'https://open-energy-blond.vercel.app/',
-    accent: 'linear-gradient(135deg, rgba(249, 115, 22, 0.45), rgba(236, 72, 153, 0.6))',
+    accent: '#ffe0e0',
     visualLabel: 'Dashboard snapshot showing live grid analytics',
   },
 ];
@@ -76,7 +76,7 @@ export default function App() {
               <article className="project-card" key={project.title}>
                 <figure
                   className="project-thumbnail"
-                  style={{ backgroundImage: project.accent }}
+                  style={{ backgroundColor: project.accent }}
                   aria-label={project.visualLabel}
                 />
                 <div className="project-body">
