@@ -4,28 +4,25 @@ const projects = [
   {
     title: 'Puzl',
     description:
-      'A logic-first puzzle platform that adapts to the player, streaming custom difficulty ramps and celebrating wins with tactile micro-interactions.',
+      'Built a self-tuning puzzle engine with live feedback loops so players always feel a step ahead of the challenge.',
     caseStudy: 'https://puzl.vercel.app/',
-    thumbnailNote: 'Use a crisp board mockup with highlighted number tiles against a soft gradient backdrop.',
-    accent: 'linear-gradient(135deg, #f8d1ff, #a07be9)',
+    accent: '#dbe4ff',
     visualLabel: 'Abstract render of the adaptive puzzle dashboard',
   },
   {
     title: 'Brain2',
     description:
-      'Networked notebooks for fast-moving product teams—capture ideas, surface relationships, and slot insights straight into decision flows.',
+      'Prototyped and shipped a networked notes tool that maps team ideas in real time and keeps context close to the work.',
     caseStudy: 'https://brain2-two.vercel.app/',
-    thumbnailNote: 'Layer overlapping cards that hint at graph connections with a charcoal-to-indigo wash.',
-    accent: 'linear-gradient(135deg, #d7f3ff, #6aa2ff)',
+    accent: '#c7f9cc',
     visualLabel: 'Stylised cards representing connected notes',
   },
   {
     title: 'Open Energy',
     description:
-      'Real-time monitoring for energy co-ops, translating live grid metrics into calm, scannable stories for field teams and stakeholders.',
+      'Designed grid monitoring dashboards that translate dense telemetry into calm stories field crews can act on instantly.',
     caseStudy: 'https://open-energy-blond.vercel.app/',
-    thumbnailNote: 'Display a live data panel with a neon accent line chart on deep navy.',
-    accent: 'linear-gradient(135deg, #ffe6c3, #ff8a57)',
+    accent: '#ffe0e0',
     visualLabel: 'Dashboard snapshot showing live grid analytics',
   },
 ];
@@ -36,7 +33,7 @@ const contactDetails = [
   { label: 'Phone', value: '+47 900 00 000', href: 'tel:+4790000000' },
   {
     label: 'Availability',
-    value: 'Accepting new product briefs for Q3',
+    value: 'Booking new collaborations for autumn',
   },
 ];
 
@@ -58,33 +55,28 @@ export default function App() {
       <main>
         <section className="hero" id="top">
           <div className="hero-copy">
-            <p className="eyebrow">Freelance Product Designer & Frontend Partner</p>
-            <h1>Designing calm digital experiences for teams who ship fast.</h1>
+            <p className="eyebrow">Independent product designer & front-end partner</p>
+            <h1>Hey, I’m Ole. I help small teams shape tools people actually enjoy using.</h1>
             <p className="hero-subtitle">
-              I help founders and product leads translate complex systems into intuitive journeys—strategy, interface, and polished build support.
+              From messy idea to shipped build, I stay close to the craft—researching, prototyping, and coding the surfaces that matter most.
             </p>
             <a className="primary-button" href="#contact">
-              Start a Project
+              Start a project together
             </a>
-            <p className="hero-visual-note">
-              Suggested hero treatment: pair this copy with a soft spotlight gradient over a monochrome studio portrait or a macro shot of interface sketches.
-            </p>
           </div>
         </section>
 
         <section className="projects" id="projects">
           <div className="section-heading">
-            <h2>Top Collaborations</h2>
-            <p>
-              Three recent builds that capture how strategy, craft, and measured motion come together across different problem spaces.
-            </p>
+            <h2>Recent collaborations</h2>
+            <p>Selected projects where I owned both the product thinking and the hands-on execution.</p>
           </div>
           <div className="project-grid">
             {projects.map((project) => (
               <article className="project-card" key={project.title}>
                 <figure
                   className="project-thumbnail"
-                  style={{ backgroundImage: project.accent }}
+                  style={{ backgroundColor: project.accent }}
                   aria-label={project.visualLabel}
                 />
                 <div className="project-body">
@@ -93,7 +85,6 @@ export default function App() {
                   <a className="text-link" href={project.caseStudy} target="_blank" rel="noreferrer">
                     Case Study
                   </a>
-                  <p className="project-visual-note">{project.thumbnailNote}</p>
                 </div>
               </article>
             ))}
@@ -105,14 +96,14 @@ export default function App() {
             <h2>About Me</h2>
           </div>
           <p>
-            I blend product strategy with hands-on design and build, partnering with teams from first sketch to launch-ready handoff. Past gigs range from data-rich dashboards to tactile creative tools, all guided by clear storytelling and measurable impact.
+            I’ve spent the last decade moving between design studios and in-house product squads. My sweet spot is translating technical problems into calm flows, then partnering with engineers to get the details right. Outside of client work you’ll find me tinkering with modular synths or cycling along the Oslofjord.
           </p>
         </section>
 
         <section className="contact" id="contact">
           <div className="section-heading">
             <h2>Let’s Connect</h2>
-            <p>Drop a note with your project goals, or grab time directly on my calendar.</p>
+            <p>Tell me what you’re building and I’ll share how I can help—or grab a time slot that works for you.</p>
           </div>
           <ul className="contact-list">
             {contactDetails.map((detail) => (
