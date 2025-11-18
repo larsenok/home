@@ -37,6 +37,30 @@ const contactDetails = [
   },
 ];
 
+const wikiEntries = [
+  {
+    id: 'process',
+    title: 'Project Rhythm',
+    summary: 'From kickoff to launch in five steady beats.',
+    details:
+      'Understand how I scope, run discovery, draft prototypes, share progress, and land releases without surprises.',
+  },
+  {
+    id: 'toolkit',
+    title: 'Toolkit & Stack',
+    summary: 'The tools I use daily and why they stick.',
+    details:
+      'Design systems in Figma, production builds in React/Vite, and light backend glue with Supabase or Firebase when needed.',
+  },
+  {
+    id: 'collab',
+    title: 'Collaboration Notes',
+    summary: 'What to expect when we work together.',
+    details:
+      'Preferred meeting cadence, async updates, and how decisions get documented so everyone stays in sync.',
+  },
+];
+
 export default function App() {
   return (
     <div className="site">
@@ -45,7 +69,7 @@ export default function App() {
           Ole Larsen
         </a>
         <nav className="site-nav">
-          <a href="/wiki">Wiki</a>
+          <a href="#wiki">Wiki</a>
           <a className="nav-cta" href="#contact">
             Contact
           </a>
@@ -56,13 +80,34 @@ export default function App() {
         <section className="hero" id="top">
           <div className="hero-copy">
             <p className="eyebrow">Independent product designer & front-end partner</p>
-            <h1>Hey, I’m Ole. I help small teams shape tools people actually enjoy using.</h1>
-            <p className="hero-subtitle">
-              From messy idea to shipped build, I stay close to the craft—researching, prototyping, and coding the surfaces that matter most.
-            </p>
+            <h1>Help teams ship fast</h1>
+            <p className="hero-subtitle">Prototype flows, build polished UIs, and stay on-call through launch.</p>
             <a className="primary-button" href="#contact">
               Start a project together
             </a>
+          </div>
+        </section>
+
+        <section className="wiki" id="wiki">
+          <div className="section-heading">
+            <h2>Wiki Table of Contents</h2>
+            <p>Quick notes clients request most often—jump in wherever you need context.</p>
+          </div>
+          <div className="wiki-toc">
+            {wikiEntries.map((entry) => (
+              <a key={entry.id} className="wiki-toc-item" href={`#wiki-${entry.id}`}>
+                <span>{entry.title}</span>
+                <p>{entry.summary}</p>
+              </a>
+            ))}
+          </div>
+          <div className="wiki-sections">
+            {wikiEntries.map((entry) => (
+              <article key={entry.id} id={`wiki-${entry.id}`}>
+                <h3>{entry.title}</h3>
+                <p>{entry.details}</p>
+              </article>
+            ))}
           </div>
         </section>
 
@@ -130,7 +175,7 @@ export default function App() {
 
       <footer className="site-footer">
         <p>© {new Date().getFullYear()} Ole Larsen. Independent designer & builder.</p>
-        <a href="/wiki">Wiki</a>
+        <a href="#wiki">Wiki</a>
       </footer>
     </div>
   );
