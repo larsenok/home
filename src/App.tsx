@@ -80,7 +80,7 @@ export default function App() {
         <section className="hero" id="top">
           <div className="hero-copy">
             <p className="eyebrow">Independent product designer & front-end partner</p>
-            <h1>I help small teams ship clear internal tools fast.</h1>
+            <h1>Help teams ship fast</h1>
             <p className="hero-subtitle">Prototype flows, build polished UIs, and stay on-call through launch.</p>
             <a className="primary-button" href="#contact">
               Start a project together
