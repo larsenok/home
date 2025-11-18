@@ -189,6 +189,66 @@ main {
   gap: clamp(28px, 5vw, 44px);
 }
 
+.wiki {
+  display: grid;
+  gap: 28px;
+  background: var(--color-panel);
+  padding: clamp(28px, 5vw, 40px);
+  border-radius: var(--radius-medium);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  box-shadow: var(--shadow-soft);
+}
+
+.wiki-toc {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.wiki-toc-item {
+  display: grid;
+  gap: 6px;
+  padding: 16px;
+  border-radius: var(--radius-small);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  background: var(--color-panel-strong);
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.wiki-toc-item span {
+  font-size: 1rem;
+}
+
+.wiki-toc-item p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  font-weight: 400;
+}
+
+.wiki-sections {
+  display: grid;
+  gap: 16px;
+}
+
+.wiki-sections article {
+  padding: 18px 20px;
+  border-radius: var(--radius-small);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  background: var(--color-panel-strong);
+}
+
+.wiki-sections h3 {
+  margin: 0 0 6px 0;
+  font-size: 1.05rem;
+}
+
+.wiki-sections p {
+  margin: 0;
+  color: var(--color-text-muted);
+}
+
 .project-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -355,6 +415,10 @@ main {
 
   .contact-label {
     min-width: 0;
+  }
+
+  .wiki-toc {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   }
 }
 
