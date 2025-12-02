@@ -1,5 +1,13 @@
 import './index.css';
 
+type WikiEntry = {
+  id: string;
+  title: string;
+  summary: string;
+  details: string[];
+  anchor?: string;
+};
+
 const projects = [
   {
     title: 'Puzl',
@@ -37,27 +45,42 @@ const contactDetails = [
   },
 ];
 
-const wikiEntries = [
+const wikiEntries: WikiEntry[] = [
   {
     id: 'process',
     title: 'Project Rhythm',
     summary: 'From kickoff to launch in five steady beats.',
-    details:
+    details: [
       'Understand how I scope, run discovery, draft prototypes, share progress, and land releases without surprises.',
+    ],
   },
   {
     id: 'toolkit',
     title: 'Toolkit & Stack',
     summary: 'The tools I use daily and why they stick.',
-    details:
+    details: [
       'Design systems in Figma, production builds in React/Vite, and light backend glue with Supabase or Firebase when needed.',
+    ],
   },
   {
     id: 'collab',
     title: 'Collaboration Notes',
     summary: 'What to expect when we work together.',
-    details:
+    details: [
       'Preferred meeting cadence, async updates, and how decisions get documented so everyone stays in sync.',
+    ],
+  },
+  {
+    id: 'stjerner',
+    title: 'Stjerner Privacy Policy',
+    summary: 'How the Stjerner mobile game handles your data.',
+    anchor: '#wiki/stjerner',
+    details: [
+      'Stjerner is a small puzzle game published on Google Play. The game only records completed games with their difficulty level and completion time so you can review your history and improve.',
+      'No personal identifiers, contact details, or advertising IDs are collected. We do not use third-party analytics or ad networks.',
+      'Game results are stored in a secure database with access limited to the service operators. Data is retained only as long as needed to provide in-game history and may be deleted upon request via the contact details in the store listing.',
+      'Stjerner is intended for general audiences and is not directed to children under 13. Updates to this policy will be posted on this page with a fresh revision date.',
+    ],
   },
 ];
 
@@ -94,20 +117,31 @@ export default function App() {
             <p>Quick notes clients request most often—jump in wherever you need context.</p>
           </div>
           <div className="wiki-toc">
-            {wikiEntries.map((entry) => (
-              <a key={entry.id} className="wiki-toc-item" href={`#wiki-${entry.id}`}>
-                <span>{entry.title}</span>
-                <p>{entry.summary}</p>
-              </a>
-            ))}
+            {wikiEntries.map((entry) => {
+              const anchor = entry.anchor ?? `#wiki-${entry.id}`;
+
+              return (
+                <a key={entry.id} className="wiki-toc-item" href={anchor}>
+                  <span>{entry.title}</span>
+                  <p>{entry.summary}</p>
+                </a>
+              );
+            })}
           </div>
           <div className="wiki-sections">
-            {wikiEntries.map((entry) => (
-              <article key={entry.id} id={`wiki-${entry.id}`}>
-                <h3>{entry.title}</h3>
-                <p>{entry.details}</p>
-              </article>
-            ))}
+            {wikiEntries.map((entry) => {
+              const anchor = entry.anchor ?? `#wiki-${entry.id}`;
+              const articleId = anchor.startsWith('#') ? anchor.slice(1) : anchor;
+
+              return (
+                <article key={entry.id} id={articleId}>
+                  <h3>{entry.title}</h3>
+                  {entry.details.map((paragraph, index) => (
+                    <p key={`${entry.id}-paragraph-${index}`}>{paragraph}</p>
+                  ))}
+                </article>
+              );
+            })}
           </div>
         </section>
 
