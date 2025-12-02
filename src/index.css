@@ -199,6 +199,19 @@ main {
   box-shadow: var(--shadow-soft);
 }
 
+.reading-page {
+  display: grid;
+  gap: 20px;
+  background: var(--color-panel);
+  padding: clamp(28px, 5vw, 40px);
+  border-radius: var(--radius-medium);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  box-shadow: var(--shadow-soft);
+  max-width: 880px;
+  width: 100%;
+  margin: 0 auto;
+}
+
 .wiki-toc {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -245,6 +258,20 @@ main {
 }
 
 .wiki-sections p {
+  margin: 0;
+  color: var(--color-text-muted);
+}
+
+.reading-article {
+  display: grid;
+  gap: 12px;
+  padding: 18px 20px;
+  border-radius: var(--radius-small);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  background: var(--color-panel-strong);
+}
+
+.reading-article p {
   margin: 0;
   color: var(--color-text-muted);
 }
