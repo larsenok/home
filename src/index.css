@@ -81,6 +81,19 @@ a:focus {
   background-color: var(--color-accent-soft);
 }
 
+.nav-outline {
+  border: 1px solid rgba(37, 99, 235, 0.2);
+  background-color: rgba(37, 99, 235, 0.06);
+  color: rgba(37, 99, 235, 0.9);
+  font-weight: 600;
+}
+
+.nav-outline:hover,
+.nav-outline:focus {
+  color: #1d4ed8;
+  background-color: rgba(37, 99, 235, 0.12);
+}
+
 .nav-cta {
   background-color: var(--color-accent-soft);
   color: var(--color-accent);

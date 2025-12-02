@@ -3,8 +3,8 @@ import { SiteShell } from '../components/SiteChrome';
 import { stjernerEntry } from '../data/wiki';
 
 const stjernerNav: NavLink[] = [
-  { label: 'Wiki', href: '/wiki' },
-  { label: 'Home', href: '/' },
+  { label: 'Wiki', href: '/wiki', className: 'nav-outline' },
+  { label: 'Home', href: '/', className: 'nav-outline' },
 ];
 
 export default function StjernerPage() {

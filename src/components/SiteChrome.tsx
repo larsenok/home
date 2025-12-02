@@ -12,13 +12,13 @@ type SiteShellProps = {
 };
 
 const defaultNavLinks: NavLink[] = [
-  { label: 'Wiki', href: '/wiki' },
+  { label: 'Wiki', href: '/wiki', className: 'nav-outline' },
   { label: 'Contact', href: '#contact', className: 'nav-cta' },
 ];
 
 export function SiteShell({ children, navLinks = defaultNavLinks }: SiteShellProps) {
   return (
-    <div className="site">
+    <div className="site" id="top">
       <SiteHeader navLinks={navLinks} />
       <main>{children}</main>
       <SiteFooter />
@@ -51,7 +51,7 @@ function SiteFooter() {
   return (
     <footer className="site-footer">
       <p>© {new Date().getFullYear()} Ole Larsen. Independent designer &amp; builder.</p>
-      <a href="/wiki">Wiki</a>
+      <a href="#top">To top</a>
     </footer>
   );
 }
