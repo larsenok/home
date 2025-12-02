@@ -3,8 +3,7 @@ import { SiteShell } from '../components/SiteChrome';
 import { wikiEntries, stjernerEntry } from '../data/wiki';
 
 const secondaryNav: NavLink[] = [
-  { label: 'Home', href: '/' },
-  { label: 'Stjerner Privacy', href: '/wiki/stjerner' },
+  { label: 'Home', href: '/', className: 'nav-outline' },
 ];
 
 export default function WikiPage() {
